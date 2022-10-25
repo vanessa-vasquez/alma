@@ -1,0 +1,12 @@
+<h2>Edit Existing Task</h2>
+<%= form_tag task_path(@task), :method => :put do %>
+  <%= label :task, :title, 'Title', class: 'col-form-label' %>
+  <%= text_field :task, 'title', class: 'form-control' %>
+  <%= label :task, :rating, 'Rating', class: 'col-form-label'  %>
+  <%= select :task, :rating, ['G','PG','PG-13','R'], {}, {class: 'form-control col-1'} %>
+  <%= label :task, :release_date, 'Released On', class: 'col-form-label'  %>
+  <%= date_select :task, :release_date, {}, class: 'form-control col-2 d-inline' %>
+  <br/>
+  <%= submit_tag 'Update Task Info', class: 'btn btn-primary' %>
+  <%= link_to 'Cancel', tasks_path, class: 'btn btn-secondary' %>
+<% end %>

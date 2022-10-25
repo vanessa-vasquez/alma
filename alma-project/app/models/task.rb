@@ -1,4 +1,4 @@
-class Movie < ActiveRecord::Base
+class Task < ActiveRecord::Base
   def self.all_ratings
     ['G', 'PG', 'PG-13', 'R']
   end
