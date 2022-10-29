@@ -1,0 +1,26 @@
+<h2>Submit a Task</h2>
+
+<%= form_tag some_path, class: 'form' do %>
+
+    <%= label :task, :name, 'Task Name', class: 'col-form-label' %>
+    <%= text_field :task, :name, class: 'form-control' %>
+    
+    <%= label :task, :time_needed, 'Time Needed', class: 'col-form-label' %>
+    <%= text_field :task, :time_needed, class: 'form-control' %>
+
+    <%= label :task, :location, 'Location', class: 'col-form-label' %>
+    <%= text_field :task, :location, class: 'form-control' %>
+
+    <%= label :task, :price, 'Price', class: 'col-form-label' %>
+    <%= text_field :task, :price, class: 'form-control' %>
+
+    <%= label :task, :description, 'Description', class: 'col-form-label' %>
+    <%= text_field :task, :description, class: 'form-control' %>
+
+    <%= submit_tag 'Submit', class: 'btn btn-primary' %>
+<% end %>
+
+
+
+
+
