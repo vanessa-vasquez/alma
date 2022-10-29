@@ -1,6 +1,4 @@
-class MoviesController < ApplicationController
-  before_action :force_index_redirect, only: [:index]
-
+class UsersController < ApplicationController
   def show
     id = params[:id] # retrieve movie ID from URI route
     @movie = Movie.find(id) # look up movie by unique ID
@@ -46,7 +44,6 @@ class MoviesController < ApplicationController
   end
 
   private
-
   def force_index_redirect
     if !params.key?(:ratings) || !params.key?(:sort_by)
       flash.keep

@@ -1,8 +1,8 @@
 class Task < ActiveRecord::Base
-  def self.all_ratings
-    ['G', 'PG', 'PG-13', 'R']
-  end
-  def self.with_ratings(ratings, sort_by)
+  # def self.all_ratings
+  #   ['G', 'PG', 'PG-13', 'R']
+  # end
+  def self.list_tasks(ratings, sort_by)
     if ratings.nil?
       all.order sort_by
     else
