@@ -31,7 +31,7 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
-  def create_account
+  def create_user
     @user = User.create!(user_params)
     flash[:notice] = "#{@user.name} was successfully created."
     redirect_to tasks_path
