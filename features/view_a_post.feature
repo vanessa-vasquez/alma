@@ -5,7 +5,7 @@ Feature: view someone else’s post
     I want to view someone else’s post
 
 Scenario: viewing someone else's post
-When I am on the ‘All Tasks’ Page
-I should be able to see ‘Task X’ 
+When I am on the ‘All Tasks’ page
+Then I should be able to see ‘Task X’ 
 And when I follow ‘Task X’
-I should be on the ‘Task X’  page
+Then I should be on the ‘Task X’ page

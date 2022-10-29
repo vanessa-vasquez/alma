@@ -6,6 +6,6 @@ Feature: view my own post
 
 Scenario: viewing my post
 When I am on the 'Profile' page
-I should see ‘Task X’ within ‘Tasks Requested’
+Then I should see ‘Task X’ within ‘Tasks Requested’
 And when I follow ‘Task X’
-I should be on the ‘Task X’ page
+Then I should be on the ‘Task X’ page
