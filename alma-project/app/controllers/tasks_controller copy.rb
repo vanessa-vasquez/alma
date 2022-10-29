@@ -7,12 +7,6 @@ class TasksController < ApplicationController
     # will render app/views/tasks/show.<extension> by default
   end
 
-  def show_user
-    id = params[:id] # retrieve task ID from URI route
-    @user= User.find(id) # look up task by unique ID
-    # will render app/views/tasks/show.<extension> by default
-  end
-
   def index
     @all_tasks = tasks.all_times
     @tasks = Task.with_times(times_list)
@@ -31,19 +25,8 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
-  def create_user
-    @user = User.create!(user_params)
-    flash[:notice] = "#{@user.first_name} #{@user.last_name} was successfully created."
-    redirect_to tasks_path
-  end
-
-
   def edit_task
     @task = Task.find params[:id]
-  end
-
-  def edit_user
-    @user = User.find params[:id]
   end
 
   def update_task
@@ -53,28 +36,12 @@ class TasksController < ApplicationController
     redirect_to task_path(@task)
   end
 
-  def update_user
-    @user = User.find params[:id]
-    @user.update_attributes!(user_params)
-    flash[:notice] = "#{@user.first_name} #{@user.last_name} was successfully updated."
-    redirect_to users_path(@user)
-  end
-
   def destroy_task
     @task = Task.find(params[:id])
     @task.destroy
     flash[:notice] = "Task'#{@task.title}' deleted."
     redirect_to tasks_path
   end
-
-
-  def delete_account
-    @user = User.find(params[:id])
-    @user.destroy
-    flash[:notice] = "User'#{@user.first_name} #{@user.last_name}' deleted."
-    redirect_to tasks_path
-  end
-
 
   private
 
