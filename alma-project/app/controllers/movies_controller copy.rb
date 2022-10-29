@@ -1,20 +1,18 @@
-class MoviesController < ApplicationController
+class TasksController < ApplicationController
   before_action :force_index_redirect, only: [:index]
 
   def show
-    id = params[:id] # retrieve movie ID from URI route
-    @movie = Movie.find(id) # look up movie by unique ID
-    # will render app/views/movies/show.<extension> by default
+    id = params[:id] # retrieve task ID from URI route
+    @task = Task.find(id) # look up task by unique ID
+    # will render app/views/tasks/show.<extension> by default
   end
 
   def index
-    @all_ratings = Movie.all_ratings
-    @movies = Movie.with_ratings(ratings_list, sort_by)
-    @ratings_to_show_hash = ratings_hash
-    @sort_by = sort_by
+    @all_tasks = tasks.all_times
+    @tasks = Task.with_times(times_list)
+    @times_to_show_hash = times_hash
     # remember the correct settings for next time
-    session['ratings'] = ratings_list
-    session['sort_by'] = @sort_by
+    session['times'] = times_list
   end
 
   def new
@@ -22,45 +20,45 @@ class MoviesController < ApplicationController
   end
 
   def create
-    @movie = Movie.create!(movie_params)
-    flash[:notice] = "#{@movie.title} was successfully created."
-    redirect_to movies_path
+    @task = Task.create!(task_params)
+    flash[:notice] = "#{@task.title} was successfully created."
+    redirect_to tasks_path
   end
 
   def edit
-    @movie = Movie.find params[:id]
+    @task = Task.find params[:id]
   end
 
   def update
-    @movie = Movie.find params[:id]
-    @movie.update_attributes!(movie_params)
-    flash[:notice] = "#{@movie.title} was successfully updated."
-    redirect_to movie_path(@movie)
+    @task = Task.find params[:id]
+    @task.update_attributes!(task_params)
+    flash[:notice] = "#{@task.title} was successfully updated."
+    redirect_to task_path(@task)
   end
 
   def destroy
-    @movie = Movie.find(params[:id])
-    @movie.destroy
-    flash[:notice] = "Movie '#{@movie.title}' deleted."
-    redirect_to movies_path
+    @task = Task.find(params[:id])
+    @task.destroy
+    flash[:notice] = "Task'#{@task.title}' deleted."
+    redirect_to tasks_path
   end
 
   private
 
   def force_index_redirect
-    if !params.key?(:ratings) || !params.key?(:sort_by)
+    if !params.key?(:times)
       flash.keep
-      url = movies_path(sort_by: sort_by, ratings: ratings_hash)
+      url = tasks_path(times:times_hash)
       redirect_to url
     end
   end
 
-  def ratings_list
-    params[:ratings]&.keys || session[:ratings] || Movie.all_ratings
+  def time_list
+    params[:times]&.keys || session[:times] || Task.all_times
   end
 
-  def ratings_hash
-    Hash[ratings_list.collect { |item| [item, "1"] }]
+  def times_hash
+    Hash[times_list.collect { |item| [item, "1"] }]
   end
 
   def sort_by
