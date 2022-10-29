@@ -14,10 +14,22 @@
 ActiveRecord::Schema.define(version: 20111119180638) do
 
   create_table "tasks", force: :cascade do |t|
-    t.string   "title"
-    t.string   "rating"
+    t.string   "name"
+    t.string    "email"
+    t.int      "hours"
+    t.datetime  "deadline"
+    t.string    "location"
+    t.integer   "price"
     t.text     "description"
-    t.datetime "release_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+  create_table "users", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string    "email"
+    t.string   "password"
+    t.string   "phone_number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
