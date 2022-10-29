@@ -33,7 +33,7 @@ class TasksController < ApplicationController
 
   def create_user
     @user = User.create!(user_params)
-    flash[:notice] = "#{@user.name} was successfully created."
+    flash[:notice] = "#{@user.first_name} #{@user.last_name} was successfully created."
     redirect_to tasks_path
   end
 
@@ -56,7 +56,7 @@ class TasksController < ApplicationController
   def update_user
     @user = User.find params[:id]
     @user.update_attributes!(user_params)
-    flash[:notice] = "#{@user.name} was successfully updated."
+    flash[:notice] = "#{@user.first_name} #{@user.last_name} was successfully updated."
     redirect_to users_path(@user)
   end
 
@@ -71,7 +71,7 @@ class TasksController < ApplicationController
   def delete_account
     @user = User.find(params[:id])
     @user.destroy
-    flash[:notice] = "User'#{@user.name}' deleted."
+    flash[:notice] = "User'#{@user.first_name} #{@user.last_name}' deleted."
     redirect_to tasks_path
   end
 
