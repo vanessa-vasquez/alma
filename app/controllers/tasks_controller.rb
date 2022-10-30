@@ -23,7 +23,11 @@ class TasksController < ApplicationController
       redirect_to root_path
     end
 
-    @tasks = Task.all == nil ? [] : Task.all
+    if Task.joins(:user).exists?(:users => {school: current_user.school})
+      @tasks = Task.joins(:user).where(:users => {school: current_user.school})
+    else
+      @tasks = []
+    end
   end
 
   def new
