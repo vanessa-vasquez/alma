@@ -1,0 +1,30 @@
+<h2><em><%= @task.name %></em></h2>
+
+<ul id="details">
+    <li>
+        Description:
+        <%= @task.description %>
+    </li>
+    <li>
+        Pay:
+        <%= @task.price %>
+    </li>
+    <li>
+        Email:
+        <%= @task.poster %>
+    </li>
+    <li>
+        Time Needed:
+        <%= @task.time_needed %>
+    </li>
+    <li>
+        Email:
+        <%= @task.poster %>
+    </li>
+    <li>
+        Location:
+        <%= @task.location %>
+    </li>
+</ul>
+
+<%= link_to 'Back to task list', some_path, class: 'btn btn-primary col-2' %>
