@@ -4,7 +4,7 @@ Rottenpotatoes::Application.routes.draw do
 
   resources :tasks do
     collection do
-      get 'my_tasks'
+      get 'my_profile'
     end
   end 
 

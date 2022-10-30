@@ -1,0 +1,30 @@
+<%= render 'shared/navbar' %>
+<div class="row">
+    <div class="col-12 text-center">
+        <h1>My Profile</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 text-center">
+        <%= link_to 'Create a New Task', new_task_path, class: 'btn btn-primary' %> 
+        <%= link_to 'Edit Profile', edit_user_registration_path, class: 'btn btn-primary' %>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <h2>My Information</h2>
+        <%= @first_name %> <%= @last_name %> <br/>
+        <%= @email %>  <br/>
+        <%= @school %>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <h2>My Tasks</h2>
+        <ul>
+            <% @my_tasks.each do |t| %>
+                <li><%= link_to t.name, edit_task_path(t.id) %></li>
+            <% end %>
+        </ul>
+    </div>
+</div>

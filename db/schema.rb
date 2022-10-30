@@ -11,11 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20221030191552) do
+ActiveRecord::Schema.define(version: 20221030200635) do
 
   create_table "tasks", force: :cascade do |t|
     t.string   "name"
-    t.string   "email"
     t.integer  "hours"
     t.datetime "deadline"
     t.string   "location"
@@ -24,6 +23,7 @@ ActiveRecord::Schema.define(version: 20221030191552) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.boolean  "completed",   default: false
   end
 
   add_index "tasks", ["user_id"], name: "index_tasks_on_user_id"

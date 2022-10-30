@@ -1,6 +1,34 @@
+<%= render 'shared/navbar' %>
 <div class="row">
   <div class="col-12 text-center">
-    Edit My Task
+    <h1>Edit My Task</h1>
+  </div>
+</div>
+<div>
+  <div class="col-12">
+    <%= form_tag task_path(@id), method: :put, class: 'form' do %>
+      <%= label :task, :name, 'Task Name', class: 'col-form-label' %>
+      <%= text_field :task, :name, value: @name, class: 'form-control' %>
+
+      <%= label :task, :hours, 'Time Needed', class: 'col-form-label' %>
+      <%= text_field :task, :hours, value: @hours, class: 'form-control' %>
+
+      <%= label :task, :location, 'Location', class: 'col-form-label' %>
+      <%= text_field :task, :location, value: @location, class: 'form-control' %>
+
+      <%= label :task, :price, 'Price', class: 'col-form-label' %>
+      <%= text_field :task, :price, value: @price, class: 'form-control' %>
+
+      <%= label :task, :description, 'Description', class: 'col-form-label' %>
+      <%= text_field :task, :description, value: @description, class: 'form-control' %>
+
+      <%= number_field :task, :user_id, class: 'form-control', value: @user_id, type: :hidden %>
+
+      <div class="text-center">
+        <%= link_to 'Delete Task', task_path(@id), method: :delete, class: 'btn btn-danger' %> 
+        <%= submit_tag 'Update', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
   </div>
 </div>
 

@@ -3,19 +3,19 @@
   <% if user_signed_in? %>
     <ul class="nav justify-content-end">
       <li class="nav-item">
-        <%= link_to 'all tasks', tasks_path, class: 'nav-link' %>
+        <%= link_to 'All Tasks', tasks_path, class: 'nav-link' %>
       </li>
       <li class="nav-item">
-        <%= link_to 'my tasks', my_tasks_tasks_path, class: 'nav-link' %>
+        <%= link_to 'My Profile', my_profile_tasks_path, class: 'nav-link' %>
       </li>
       <li class="nav-item">
-        <%= link_to 'sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
       </li>
     </ul>
   <% else %>
     <ul class="nav justify-content-end">
       <li class="nav-item">
-        <%= link_to 'sign in', new_user_session_path, class: 'nav-link' %>
+        <%= link_to 'Sign In', new_user_session_path, class: 'nav-link' %>
       </li>
     </ul>
   <% end %>

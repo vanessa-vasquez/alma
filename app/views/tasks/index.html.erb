@@ -1,6 +1,24 @@
 <%= render 'shared/navbar' %>
 <div class="row">
   <div class="col-12 text-center">
-    tasks
+    <h1>Tasks</h1>
   </div>
 </div>
+<div class="row">
+      <% @tasks.each do |t| %>
+        <div class="col-4">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title"><%= t.user.fname %> <%= t.user.lname %></h5>
+              <h6 class="card-subtitle mb-2 text-muted"><%= t.user.email %></h6>
+              <p class="card-text font-weight-bold"><%= t.name %></p>
+              <p class="card-text"><%= t.description %></p>
+              <p class="card-text font-weight-bold">Time Needed: <%= t.hours %> hr(s)</p>
+              <p class="card-text font-weight-bold">Location: <%= t.location %></p>
+              <p class="card-text font-weight-bold">Pay: $<%= t.price %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+</div>
+
