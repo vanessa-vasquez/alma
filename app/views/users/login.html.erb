@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-12 text-center">
+        login
+    </div>
+    <div class="col-12">
+        <%= form_tag tasks_path, class: 'form' do %>
+            <%= label :user, :email, 'Email', class: 'col-form-label' %>
+            <%= text_field :user, :email, class: 'form-control' %>
+
+            <%= label :user, :pass, 'Password', class: 'col-form-label' %>
+            <%= text_field :user, :pass, class: 'form-control' %>
+
+            <div class="text-center">
+                <%= submit_tag 'Login', class: 'btn btn-primary' %>
+            </div>
+        <% end %>
+    </div>
+</div>

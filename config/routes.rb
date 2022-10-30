@@ -1,5 +1,14 @@
 Rottenpotatoes::Application.routes.draw do
-  resources :movies
-  # map '/' to be a redirect to '/movies'
-  root :to => redirect('/movies')
+  root to: 'dashboard#index'
+
+  resources :users do
+    collection do
+      get 'login'
+    end
+  end
+  resources :tasks do
+    collection do
+      get 'my_tasks'
+    end
+  end 
 end
