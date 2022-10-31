@@ -13,8 +13,9 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
+    when /^the (Alma)?home\s?page$/ then '/'
     when /^My Profile page$/ then my_profile_tasks_path
-    when /^Create Task page$/ then new_tasks_path
+    when /^the All Tasks page$/ then tasks_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
