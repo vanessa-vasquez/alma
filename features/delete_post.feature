@@ -5,7 +5,7 @@ Feature: delete a task
     I want to delete a task
 
 Scenario: delete a task
-Given I am on the 'Task A' page
+Given I am on the '' page
 When I press "Delete"
 Then I should be on the 'Profile' page 
 And I should not see 'Task A'
