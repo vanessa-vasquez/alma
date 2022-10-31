@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20221030200635) do
 
   create_table "tasks", force: :cascade do |t|
     t.string   "name"
-    t.integer  "hours"
+    t.float    "hours"
     t.datetime "deadline"
     t.string   "location"
     t.integer  "price"
