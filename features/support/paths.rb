@@ -14,6 +14,7 @@ module NavigationHelpers
     case page_name
 
     when /^My Profile page$/ then my_profile_tasks_path
+    when /^Create Task page$/ then new_tasks_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
