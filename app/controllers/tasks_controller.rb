@@ -1,24 +1,19 @@
 class TasksController < ApplicationController
-  # before_action :force_index_redirect, only: [:index]
-
   def show
-    # id = params[:id] # retrieve task ID from URI route
-    # @task = Task.find(id) # look up movie by unique ID
-    # # will render app/views/movies/show.<extension> by default
     if !user_signed_in?
       redirect_to root_path
     end
 
-    redirect_to my_profile_tasks_path
+    @task = Task.find params[:id]
+    @id = @task.id
+    @name = @task.name
+    @description = @task.description
+    @hours = @task.hours
+    @location = @task.location
+    @price = @task.price
   end
 
   def index
-    #@tasks = Movie.with_ratings(ratings_list, sort_by)
-    # @ratings_to_show_hash = ratings_hash
-    # @sort_by = sort_by
-    # remember the correct settings for next time
-    # session['ratings'] = ratings_list
-    # session['sort_by'] = @sort_by
     if !user_signed_in?
       redirect_to root_path
     end
@@ -31,7 +26,6 @@ class TasksController < ApplicationController
   end
 
   def new
-    # default: render 'new' template
     if !user_signed_in?
       redirect_to root_path
     end

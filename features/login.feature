@@ -5,7 +5,6 @@ Feature: login user
     I want to login to my account on Alma
 
 Background: app is opened to home page
-
     Given I am on the home page
     When I press "login"
     Then I should be on the login page
