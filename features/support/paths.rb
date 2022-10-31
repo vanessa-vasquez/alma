@@ -14,11 +14,7 @@ module NavigationHelpers
     case page_name
 
     when /^the (Alma)?home\s?page$/ then '/'
-    when /^the tasks page$/ then '/tasks'
-    when /^the login page$/ then '/users/sign_in'
-    when /^the sign up page$/ then '/users/sign_up'
-    when /^my profile page$/ then '/tasks/my_profile'
-
+    when /^My Profile page$/ then my_profile_tasks_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
