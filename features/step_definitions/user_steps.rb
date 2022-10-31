@@ -16,7 +16,7 @@ Given /I am signed in/ do
   click_button "Log in"
 end
 
-Given /I have tasks/ do
+Given /I have a task/ do
   Task.create!({name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30,
   description: 'Seeking experienced photographer for Senior pics!', user_id: 1, completed: false})
 end

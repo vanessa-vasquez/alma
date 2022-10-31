@@ -72,7 +72,6 @@ class TasksController < ApplicationController
     if !user_signed_in?
       redirect_to root_path
     end
-
     @my_tasks = Task.where(user_id: current_user.id) == nil ? [] : Task.where(user_id: current_user.id)
     @first_name = current_user.fname
     @last_name = current_user.lname

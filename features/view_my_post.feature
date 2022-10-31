@@ -7,10 +7,13 @@ Feature: view my own post
 Background: user is logged in
   Given I am a valid user
   And I am signed in
-  And I have tasks
+  And I have a task
 
 Scenario: viewing my post
-    When I am on the 'Profile' page
-    Then I should see ‘Task X’ within ‘Tasks Requested’
-    And when I follow ‘Task X’
-    Then I should be on the ‘Task X’ page
+    When I go to My Profile page
+    And I follow "Senior Photos"
+    Then I should see "Senior Photos"
+    And I should see "2.0 hr(s)"
+    And I should see "Low Library Steps"
+    And I should see "$30"
+
