@@ -7,5 +7,4 @@ Rottenpotatoes::Application.routes.draw do
       get 'my_profile'
     end
   end 
-
 end

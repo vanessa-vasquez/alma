@@ -7,9 +7,9 @@ Feature: view someone else’s post
 Background: user is logged in
   Given I am a valid user
   And I am signed in
-  And there are tasks posted by other users
   
-Scenario: viewing someone else's post
+Scenario: there are available tasks
+    Given there are tasks posted by other users
     When I am on the All Tasks page
     Then I should see "Billy Bob"
     And I should see "bb1234@columbia.edu"
@@ -18,3 +18,7 @@ Scenario: viewing someone else's post
     And I should see "3.0 hr(s)"
     And I should see "Carman Floor 5 Kitchen"
     And I should see "$3"
+
+Scenario: there are no available tasks
+    When I am on the All Tasks page
+    Then I should see "There are no tasks available at the moment."

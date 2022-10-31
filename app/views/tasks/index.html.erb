@@ -20,5 +20,10 @@
           </div>
         </div>
       <% end %>
+      <% if @tasks.length == 0 %>
+        <div class="col-12 text-center">
+          There are no tasks available at the moment.
+        <div>
+      <% end %>
 </div>
 
