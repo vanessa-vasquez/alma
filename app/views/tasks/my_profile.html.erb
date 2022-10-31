@@ -23,7 +23,7 @@
         <h2>My Tasks</h2>
         <ul>
             <% @my_tasks.each do |t| %>
-                <li><%= link_to t.name, edit_task_path(t.id) %></li>
+                <li><%= link_to t.name, task_path(t.id) %></li>
             <% end %>
         </ul>
     </div>

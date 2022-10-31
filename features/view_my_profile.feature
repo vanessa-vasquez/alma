@@ -7,7 +7,7 @@ Feature: view my profile
 Background: user is logged in
   Given I am a valid user
   And I am signed in
-  And I have tasks
+  And I have a task
 
 Scenario: view my user information
     When I go to My Profile page
