@@ -4,20 +4,31 @@ Feature: update a task
     So that I can make changes to my task information
     I want to update a task
 
-Scenario: I want to update a task (valid)
-Given I am on the ‘Task A’ page
-And I press ‘Update Page’ 
-Then I should be on the ‘Update Task’ page
-And when I fill in "Time Needed" with "1 hour"
-And when I hit the ‘Submit Changes’ button
-Then I should be on the ‘Task A' page
-And I should see "1 hour" 
+Background: user is logged in
+    Given I am a valid user
+    And I am signed in
+    And I have a task
+    When I go to My Profile page
+    And I follow "Senior Photos"
+    Then I should be on the View Task page for "Senior Photos"
+    And I should see "Edit Task"
+    When I follow "Edit Task"
+    Then I should be on the Edit Task page for "Senior Photos"
 
-Scenario: I want to update a task (invalid)
-Given I am on the ‘Task A’ page
-And I press ‘Update Page’ 
-Then I should be on the ‘Update Task’ page
-And when I fill in "Time Needed" with ""
-And when I hit the ‘Submit Changes’ button
-Then I should be on the "Update Task" page
-And the "Time Needed" field should have the error "Required field"
+Scenario: I want to update a task name (valid)
+    Given I am on the Edit Task page for "Senior Photos"
+    And I fill in "Task Name" with "Junior Photos"
+    And I press "Update"
+    Then I should be on My Profile page
+    And I should see "Junior Photos"
+    When I follow "Junior Photos"
+    Then I should see "Junior Photos"
+
+Scenario: I want to update a task time (valid)
+    Given I am on the Edit Task page for "Senior Photos"
+    And I fill in "Time Needed" with "5"
+    And I press "Update"
+    Then I should be on My Profile page
+    And I should see "Senior Photos"
+    When I follow "Senior Photos"
+    Then I should see "Time Needed: 5 hr(s)"

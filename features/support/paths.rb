@@ -16,6 +16,9 @@ module NavigationHelpers
     when /^the (Alma)?home\s?page$/ then '/'
     when /^My Profile page$/ then my_profile_tasks_path
     when /^the All Tasks page$/ then tasks_path
+    when /^the Create Task page$/ then new_task_path
+    when /^the View Task page for "(.+)"$/ then task_path(Task.find_by(name:$1).id)
+    when /^the Edit Task page for "(.+)"$/ then edit_task_path(Task.find_by(name:$1).id)
     when /^the login page$/ then new_user_session_path
     when /^the sign up page$/ then new_user_registration_path
 
