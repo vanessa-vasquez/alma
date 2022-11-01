@@ -1,13 +1,11 @@
 require 'rails_helper'
 
 describe TasksController do 
-  describe 'index' do
-    
+  describe 'index #index' do
     it "renders the index template" do
       user = User.create(email: 'ad25@columbia.edu', password: 'CatsAreKool1', fname: 'Adam', lname: 'Daniels', school: 'Columbia University')
       sign_in user
       get :index, :format => "html"
-      #expect(response).to render_template("index")
     end
   end
 
