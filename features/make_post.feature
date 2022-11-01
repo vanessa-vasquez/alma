@@ -18,3 +18,10 @@ Scenario: All fields of the post form are completed
     And I press "Create"
     Then I should be on My Profile page
     And I should see "Senior Photos"
+
+Scenario: Missing fields of the post form
+    When I am on the Create Task page
+    And I fill in "Time Needed" with "5 minutes"
+    And I fill in "Description" with "Does anybody have any extra AAA batteries? I just need two!"
+    And I press "Create"
+    And I should be on the Create Task page

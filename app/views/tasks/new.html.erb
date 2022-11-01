@@ -4,11 +4,12 @@
         <h1>Create a Task</h1>
     </div>
 </div>
-
+# <% flash.each do |key, message| %>
+#   <p><%= message %></p>
+# <% end %>
 <%= form_tag tasks_path, class: 'form' do %>
-
   <%= label :task, :name, 'Task Name', class: 'col-form-label' %>
-  <%= text_field :task, :name, class: 'form-control', required: true, autofocus: true %>
+  <%= text_field :task, :name, class: 'form-control', autofocus: true, required: true %>
 
   <%= label :task, :hours, 'Time Needed', class: 'col-form-label' %>
   <%= text_field :task, :hours, class: 'form-control', required: true %>

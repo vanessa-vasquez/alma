@@ -20,12 +20,11 @@ class TasksController < ApplicationController
     end
 
     if Task.joins(:user).exists?(:users => {school: current_user.school})
-      if !@user.school.blank?
-        @tasks = Task.joins(:user).where(:users => {school: current_user.school})
-      end
+      @tasks = Task.joins(:user).where(:users => {school: current_user.school})
     else
       @tasks = []
     end
+
   end
 
   def new
