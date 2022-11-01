@@ -8,19 +8,14 @@
 <%= form_tag tasks_path, class: 'form' do %>
   <%= label :task, :name, 'Task Name', class: 'col-form-label' %>
   <%= text_field :task, :name, class: 'form-control', autofocus: true, required: true %>
-
   <%= label :task, :hours, 'Time Needed', class: 'col-form-label' %>
   <%= text_field :task, :hours, class: 'form-control', required: true %>
-
   <%= label :task, :location, 'Location', class: 'col-form-label' %>
   <%= text_field :task, :location, class: 'form-control', required: true %>
-
   <%= label :task, :price, 'Price', class: 'col-form-label' %>
   <%= text_field :task, :price, class: 'form-control', required: true %>
-
   <%= label :task, :description, 'Description', class: 'col-form-label' %>
   <%= text_field :task, :description, class: 'form-control', required: true %>
-
   <%= number_field :task, :user_id, class: 'form-control', value: @user_id, type: :hidden %>
 
   <div class="text-center">

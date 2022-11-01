@@ -25,7 +25,11 @@ class TasksController < ApplicationController
     else
       @tasks = []
     end
-
+    # if Task.joins(:user).exists?(:users => {school: current_user.school})
+    #   @tasks = Task.joins(:user).where(:users => {school: current_user.school})
+    # else
+    #   @tasks = []
+    #end
   end
 
   def new
@@ -43,9 +47,9 @@ class TasksController < ApplicationController
 
   def edit
     if !user_signed_in?
-      return redirect_to root_path
+      return redirect_to root_path 
     elsif Task.where(id: params[:id]).empty? || (!Task.where(id: params[:id]).empty? && (Task.find(params[:id]).user_id != current_user.id))
-      return redirect_to root_path
+      return redirect_to root_path 
     end
 
     @task = Task.find params[:id]
@@ -83,7 +87,6 @@ class TasksController < ApplicationController
       @school = current_user.school
       @email = current_user.email
     end
-    
   end
 
   private
