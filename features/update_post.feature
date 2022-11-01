@@ -31,4 +31,4 @@ Scenario: I want to update a task time (valid)
     Then I should be on My Profile page
     And I should see "Senior Photos"
     When I follow "Senior Photos"
-    Then I should see "Time Needed: 5 hr(s)"
+    Then I should see "Time Needed: 5.0 hr(s)"

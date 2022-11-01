@@ -20,7 +20,7 @@ Scenario: make an account successfully (verified via authentication)
     When I press "Sign up"
     Then I should be on the All Tasks page
 
-Scenario: unsuccessful attempt at making an account (non Columbia email)
+Scenario: unsuccessful attempt at making an account (non university email)
     Given I am on the sign up page
     When I fill in "First Name" with "Alma"
     And I fill in "Last Name" with "Mater"
@@ -29,7 +29,7 @@ Scenario: unsuccessful attempt at making an account (non Columbia email)
     And I fill in "Password" with "SecretOwl"
     And I fill in "Password confirmation" with "SecretOwl"
     And I press "Sign up"
-    Then I should see "Please use a university email"
+    Then I should see "Email is not a university email"
 
 Scenario: unsuccessful attempt at making an account (missing information- ex: email)
     Given I am on the sign up page

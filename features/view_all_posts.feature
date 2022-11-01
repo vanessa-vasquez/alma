@@ -9,8 +9,8 @@ Background: user is logged in
   And I am signed in
   
 Scenario: there are available tasks
-    Given there are tasks posted by other users
-    When I am on the All Tasks page
+    Given I am on the All Tasks page
+    And there are tasks posted by other users
     Then I should see "Billy Bob"
     And I should see "bb1234@columbia.edu"
     And I should see "Need brownie pan"
