@@ -24,4 +24,4 @@ Scenario: Missing fields of the post form
     And I fill in "Time Needed" with "5 minutes"
     And I fill in "Description" with "Does anybody have any extra AAA batteries? I just need two!"
     And I press "Create"
-    And I should be on the Create Task page
+    Then I should be on the Create Task page

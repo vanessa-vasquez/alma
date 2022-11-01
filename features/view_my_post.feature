@@ -13,7 +13,7 @@ Scenario: viewing my post
     When I go to My Profile page
     And I follow "Senior Photos"
     Then I should see "Senior Photos"
-    And I should see "2.0 hr(s)"
+    And I should see "2 hr(s)"
     And I should see "Low Library Steps"
     And I should see "$30"
 
