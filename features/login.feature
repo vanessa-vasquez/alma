@@ -21,4 +21,4 @@ Scenario: login with incorrect details
     When I fill in "Email" with "thisisnotanemail"
     And I fill in "Password" with "almamater"
     When I press "Log in"
-    Then I should see "Incorrect login information"
+    Then I should be on the login page
