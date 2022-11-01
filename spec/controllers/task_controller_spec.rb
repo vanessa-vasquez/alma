@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+
 describe TasksController do 
   describe 'index' do
     it "renders the index template" do
@@ -11,22 +12,39 @@ describe TasksController do
   describe 'Show' do
     let!(:param) {{name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 1, completed: false}}
     let!(:task) {Task.create!(param)}
-    it 'finds the movie' do
+
+    let!(:param2) {{email: 'ad25@columbia.edu', password: 'CatsAreKool1', fname: 'Adam', lname: 'Daniels', school: 'Columbia University'}}
+    let!(:user) {User.create!(param2)}
+
+    it 'finds the task' do
       get :show, id: task.id
       expect(assigns(:task)).to eql(task)
-    end
+    end 
   end
 
-  it "renders the new template" do
-    get :new
-    expect(response).to render_template("new")
+
+  describe "POST create" do
+    let!(:param) {{name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 1, completed: false}}
+    let!(:task1) {Task.create!(param)}
+
+    context "with valid attributes" do
+      it "creates a new task" do
+        expect{
+          post :create, task: task1.attributes
+        }.to change(Task,:count).by(1)
+      end
+    end
   end
+  
 
   describe 'Edit' do
     let!(:param) {{name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 1, completed: false}}
     let!(:task) {Task.create!(param)}
+    let!(:param2) {{email: 'ad25@columbia.edu', password: 'CatsAreKool1', fname: 'Adam', lname: 'Daniels', school: 'Columbia University'}}
+    let!(:current_user) {User.create!(param2)}
+
     it 'edits the task' do
-      get :edit, id: task.id
+      get :edit, id: task.id, user_id: current_user.id
       expect(assigns(:task)).to eql(task)
     end
   end
@@ -39,46 +57,35 @@ describe TasksController do
     end
   end
 
+  describe 'New' do
+    let!(:param2) {{email: 'ad25@columbia.edu', password: 'CatsAreKool1', fname: 'Adam', lname: 'Daniels', school: 'Columbia University'}}
+    let!(:user) {User.create!(param2)}
+
+    # it 'checks if user is not signed in' do
+    #   expect(response).to render_template("index")
+    # end
+  end
+
+  describe "PATCH #update" do
+    let!(:param) {{name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 1, completed: false}}
+    let!(:task1) {Task.create!(param)}
+
+    context "with good data" do
+      it "updates the task" do
+        patch :update, id: task1.id, task: { name: "Senior Photos", hours: 3}
+        expect(response).to be_redirect
+      end
+    end
+  end
+    
+
 end
 
+
 #Resources:
+#https://github.com/heartcombo/devise/wiki/How-To:-Test-controllers-with-Rails-(and-RSpec)
 #https://relishapp.com/rspec/rspec-rails/v/4-0/docs/controller-specs
 
-
-
-# require 'rails_helper'
-
-# RSpec.describe TasksController, type: :controller do
-#    describe "GET show" do 
-#     it "shows find correctly"
-#         @fake_results = [double('Task'), double('Task')]
-#         Task.stub(:find).and_return(@fake_results)
-#     end
-#     it "shows task by ID"
-#         task1 = Task.create(id: "11")
-#         get :show, id: task1.id
-#         expect(response).to render_template(:show)
-#     end
-#    end
-#    describe "GET index" do
-#     it 'finds all tasks' do
-#       get :index
-#       expect(response).to render_template(:index)
-#     end
-#   end
-#   describe "GET edit" do
-#     it 'edit an existing task' do
-#       @fake_results = [double('Task'), double('Task')]
-#       Task.stub(:find).and_return(@fake_results)
-#       #task = Task.create(id: "12")
-#       #get :edit, id: task.id
-#       #expect(response).to render_template('edit')
-#     end
-#   end
-
-
-  
-# end
 
 
 

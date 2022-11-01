@@ -1,4 +1,5 @@
 require 'simplecov'
+require 'devise'
 SimpleCov.start 'rails'
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
@@ -55,6 +56,7 @@ RSpec.configure do |config|
 
   RSpec.configure do |config|
     config.include Devise::Test::ControllerHelpers, type: :controller
+    config.include Devise::Test::IntegrationHelpers, type: :request
   end
 
   
