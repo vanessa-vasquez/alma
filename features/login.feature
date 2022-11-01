@@ -10,8 +10,9 @@ Background: app is opened to home page
 
 Scenario: login with correct details
     Given I am on the login page
-    When I fill in "Email" with "ad25@columbia.edu"
-    And I fill in "Password" with "CatsAreKool1"
+    And I am a valid user
+    When I fill in "Email" with "sj1234@columbia.edu"
+    And I fill in "Password" with "12345678"
     When I press "Log in"
     Then I should be on the All Tasks page
 
