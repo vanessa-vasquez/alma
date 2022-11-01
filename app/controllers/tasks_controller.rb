@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   def show
     if !user_signed_in?
-      redirect_to root_path
+      redirect_to root_path and return
     end
 
     @task = Task.find params[:id]
@@ -16,7 +16,7 @@ class TasksController < ApplicationController
   def index
 
     if (!user_signed_in?)
-      redirect_to root_path
+      redirect_to root_path and return
     end
 
     if Task.joins(:user).exists?(:users => {school: current_user.school})
@@ -30,7 +30,7 @@ class TasksController < ApplicationController
 
   def new
     if !user_signed_in?
-      redirect_to root_path
+      redirect_to root_path and return
     end
     @user_id = current_user.id
   end
@@ -43,7 +43,7 @@ class TasksController < ApplicationController
 
   def edit
     if !user_signed_in?
-      redirect_to root_path
+      redirect_to root_path and return
     end
 
     @task = Task.find params[:id]
@@ -75,7 +75,7 @@ class TasksController < ApplicationController
 
   def my_profile
     if !user_signed_in?
-      redirect_to root_path
+      redirect_to root_path and return
     end
     @my_tasks = Task.where(user_id: current_user.id) == nil ? [] : Task.where(user_id: current_user.id)
     @first_name = current_user.fname
