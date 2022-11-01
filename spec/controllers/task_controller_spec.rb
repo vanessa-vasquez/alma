@@ -10,17 +10,17 @@ describe TasksController do
     end
   end
 
-  describe 'Show' do
+  describe 'Show #show' do
     let!(:param) {{name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 1, completed: false}}
     let!(:task) {Task.create!(param)}
+
     it 'finds the task' do
       get :show, id: task.id
       expect(assigns(:task)).to eql(task)
     end 
   end
 
-
-  describe "POST create" do
+  describe "POST #create" do
     let!(:param) {{name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 1, completed: false}}
     let!(:task1) {Task.create!(param)}
 
@@ -33,7 +33,6 @@ describe TasksController do
     end
   end
   
-
   describe 'Edit' do
     let!(:param) {{name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 1, completed: false}}
     let!(:task) {Task.create!(param)}
