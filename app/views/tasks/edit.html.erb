@@ -8,19 +8,19 @@
   <div class="col-12">
     <%= form_tag task_path(@id), method: :put, class: 'form' do %>
       <%= label :task, :name, 'Task Name', class: 'col-form-label' %>
-      <%= text_field :task, :name, value: @name, class: 'form-control' %>
+      <%= text_field :task, :name, value: @name, class: 'form-control', required: true %>
 
       <%= label :task, :hours, 'Time Needed', class: 'col-form-label' %>
-      <%= text_field :task, :hours, value: @hours, class: 'form-control' %>
+      <%= text_field :task, :hours, value: @hours, class: 'form-control', required: true %>
 
       <%= label :task, :location, 'Location', class: 'col-form-label' %>
-      <%= text_field :task, :location, value: @location, class: 'form-control' %>
+      <%= text_field :task, :location, value: @location, class: 'form-control', required: true %>
 
       <%= label :task, :price, 'Price', class: 'col-form-label' %>
-      <%= text_field :task, :price, value: @price, class: 'form-control' %>
+      <%= text_field :task, :price, value: @price, class: 'form-control', required: true %>
 
       <%= label :task, :description, 'Description', class: 'col-form-label' %>
-      <%= text_field :task, :description, value: @description, class: 'form-control' %>
+      <%= text_field :task, :description, value: @description, class: 'form-control', required: true %>
 
       <%= number_field :task, :user_id, class: 'form-control', value: @user_id, type: :hidden %>
 

@@ -25,6 +25,7 @@ class TasksController < ApplicationController
     else
       @tasks = []
     end
+
   end
 
   def new
