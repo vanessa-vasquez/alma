@@ -19,10 +19,8 @@ class TasksController < ApplicationController
       redirect_to root_path
     end
 
-    if Task.joins(:user).exists?(:users => {school: current_user.school})
-      if !@user.school.blank?
-        @tasks = Task.joins(:user).where(:users => {school: current_user.school})
-      end
+    if (Task.joins(:user).exists?)
+      @tasks = Task.joins(:user).where(school: current_user.school)
     else
       @tasks = []
     end
@@ -47,10 +45,7 @@ class TasksController < ApplicationController
     end
 
     @task = Task.find params[:id]
-    if (current_user != nil)
-      @user_id = current_user.id
-    end
-
+    @user_id = current_user.id
     @id = @task.id
     @name = @task.name
     @description = @task.description
@@ -77,11 +72,14 @@ class TasksController < ApplicationController
     if !user_signed_in?
       redirect_to root_path
     end
-    @my_tasks = Task.where(user_id: current_user.id) == nil ? [] : Task.where(user_id: current_user.id)
-    @first_name = current_user.fname
-    @last_name = current_user.lname
-    @school = current_user.school
-    @email = current_user.email
+    if (user_signed_in?)
+      @my_tasks = Task.where(user_id: current_user.id) == nil ? [] : Task.where(user_id: current_user.id)
+      @first_name = current_user.fname
+      @last_name = current_user.lname
+      @school = current_user.school
+      @email = current_user.email
+    end
+    
   end
 
   private

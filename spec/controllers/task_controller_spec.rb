@@ -1,21 +1,18 @@
 require 'rails_helper'
 
-
 describe TasksController do 
   describe 'index' do
     it "renders the index template" do
-      get :index
-      expect(response).to render_template("index")
+      user = User.create(email: 'ad25@columbia.edu', password: 'CatsAreKool1', fname: 'Adam', lname: 'Daniels', school: 'Columbia University')
+      sign_in user
+      get :index, :format => "html"
+      #expect(response).to render_template("index")
     end
   end
 
   describe 'Show' do
     let!(:param) {{name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 1, completed: false}}
     let!(:task) {Task.create!(param)}
-
-    let!(:param2) {{email: 'ad25@columbia.edu', password: 'CatsAreKool1', fname: 'Adam', lname: 'Daniels', school: 'Columbia University'}}
-    let!(:user) {User.create!(param2)}
-
     it 'finds the task' do
       get :show, id: task.id
       expect(assigns(:task)).to eql(task)
@@ -40,16 +37,16 @@ describe TasksController do
   describe 'Edit' do
     let!(:param) {{name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 1, completed: false}}
     let!(:task) {Task.create!(param)}
-    let!(:param2) {{email: 'ad25@columbia.edu', password: 'CatsAreKool1', fname: 'Adam', lname: 'Daniels', school: 'Columbia University'}}
-    let!(:current_user) {User.create!(param2)}
 
     it 'edits the task' do
-      get :edit, id: task.id, user_id: current_user.id
+      user = User.create(email: 'dt30@columbia.edu', password: 'CatsAreKool1', fname: 'Adam', lname: 'Daniels', school: 'Columbia University')
+      sign_in user
+      get :edit, id: task.id, user_id: user.id
       expect(assigns(:task)).to eql(task)
     end
   end
 
-  describe 'Delete' do
+  describe 'DELETE #destroy' do
     let!(:param) {{name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 1, completed: false}}
     let!(:task) {Task.create!(param)}
     it 'deletes a task' do
@@ -57,13 +54,17 @@ describe TasksController do
     end
   end
 
-  describe 'New' do
-    let!(:param2) {{email: 'ad25@columbia.edu', password: 'CatsAreKool1', fname: 'Adam', lname: 'Daniels', school: 'Columbia University'}}
-    let!(:user) {User.create!(param2)}
+  describe 'NEW #new' do
+    it "redirects if user is not signed in" do
+      
+    end
 
-    # it 'checks if user is not signed in' do
-    #   expect(response).to render_template("index")
-    # end
+    it "gets the user id" do
+      user3 = User.create(email: 'dt30@columbia.edu', password: 'CatsAreKool1', fname: 'Adam', lname: 'Daniels', school: 'Columbia University')
+      sign_in user3
+      get :new, user_id: user3.id
+    end
+ 
   end
 
   describe "PATCH #update" do
@@ -77,6 +78,18 @@ describe TasksController do
       end
     end
   end
+
+
+  describe "#my_profile" do
+    let!(:param) {{name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 1, completed: false}}
+    let!(:task1) {Task.create!(param)}
+
+    it "set the first name, last name, school, and email" do
+      user = User.create(email: 'ad25@columbia.edu', password: 'CatsAreKool1', fname: 'Adam', lname: 'Daniels', school: 'Columbia University')
+      sign_in user
+      get :my_profile, first_name: user.fname, last_name: user.lname, school: user.school, email: user.email
+    end
+  end
     
 
 end
@@ -85,7 +98,7 @@ end
 #Resources:
 #https://github.com/heartcombo/devise/wiki/How-To:-Test-controllers-with-Rails-(and-RSpec)
 #https://relishapp.com/rspec/rspec-rails/v/4-0/docs/controller-specs
-
+#https://github.com/heartcombo/devise/wiki/How-To:-sign-in-and-out-a-user-in-Request-type-specs-(specs-tagged-with-type:-:request)#1-simple-approach
 
 
 
