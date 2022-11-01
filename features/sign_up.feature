@@ -8,8 +8,7 @@ Background: app is opened to home page
 
     Given I am on the home page
     When I follow "Sign Up"
-    
-
+    Then I should be on the sign up page
 Scenario: make an account successfully (verified via authentication)
     Given I am on the sign up page
     When I fill in "First Name" with "Alma"
@@ -18,8 +17,8 @@ Scenario: make an account successfully (verified via authentication)
     And I fill in "Email" with "am1122@columbia.edu"
     And I fill in "Password" with "SecretOwl"
     And I fill in "Password confirmation" with "SecretOwl"
-    And I press "Sign up"
-    Then I should be on my profile page
+    When I press "Sign up"
+    Then I should be on the All Tasks page
 
 Scenario: unsuccessful attempt at making an account (non Columbia email)
     Given I am on the sign up page
@@ -30,7 +29,7 @@ Scenario: unsuccessful attempt at making an account (non Columbia email)
     And I fill in "Password" with "SecretOwl"
     And I fill in "Password confirmation" with "SecretOwl"
     And I press "Sign up"
-    Then I should see "Please use a Columbia University email"
+    Then I should see "Please use a university email"
 
 Scenario: unsuccessful attempt at making an account (missing information- ex: email)
     Given I am on the sign up page

@@ -16,6 +16,8 @@ module NavigationHelpers
     when /^the (Alma)?home\s?page$/ then '/'
     when /^My Profile page$/ then my_profile_tasks_path
     when /^the All Tasks page$/ then tasks_path
+    when /^the login page$/ then new_user_session_path
+    when /^the sign up page$/ then new_user_registration_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
