@@ -25,3 +25,4 @@ Scenario: Missing fields of the post form
     And I fill in "Description" with "Does anybody have any extra AAA batteries? I just need two!"
     And I press "Create"
     Then I should be on the Create Task page
+    And I should see "Name can't be blank"
