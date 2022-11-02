@@ -15,7 +15,7 @@
   <%= label :task, :price, 'Price', class: 'col-form-label' %>
   <%= text_field :task, :price, class: 'form-control'%>
   <%= label :task, :description, 'Description', class: 'col-form-label' %>
-  <%= text_field :task, :description, class: 'form-control' %>
+  <%= text_area :task, :description, class: 'form-control', size: '20x7' %>
   <%= number_field :task, :user_id, class: 'form-control', value: @user_id, type: :hidden %>
 
 

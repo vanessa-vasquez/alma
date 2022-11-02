@@ -11,7 +11,7 @@
             <div class="card-body">
               <h5 class="card-title"><%= t.user.fname %> <%= t.user.lname %></h5>
               <h6 class="card-subtitle mb-2 text-muted"><%= t.user.email %></h6>
-              <p class="card-text font-weight-bold"><%= t.name %></p>
+              <%= link_to t.name, task_path(t.id), class: 'card-text font-weight-bold stretched-link' %> 
               <p class="card-text"><%= t.description %></p>
               <p class="card-text font-weight-bold">Time Needed: <%= t.hours %> hr(s)</p>
               <p class="card-text font-weight-bold">Location: <%= t.location %></p>

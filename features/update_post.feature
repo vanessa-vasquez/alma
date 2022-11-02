@@ -32,3 +32,10 @@ Scenario: I want to update a task time (valid)
     And I should see "Senior Photos"
     When I follow "Senior Photos"
     Then I should see "Time Needed: 5 hr(s)"
+
+Scenario: I want to update a task (invalid)
+    Given I am on the Edit Task page for "Senior Photos"
+    And I fill in "Time Needed" with ""
+    And I press "Update"
+    Then I should be on the Edit Task page for "Senior Photos"
+    And I should see "Hours can't be blank"

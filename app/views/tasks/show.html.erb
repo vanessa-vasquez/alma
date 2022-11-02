@@ -2,7 +2,9 @@
 <div class="row">
   <div class="col-12 text-center">
     <h1><%=@name%></h1>
-    <%= link_to 'Edit Task', edit_task_path(@id), class: 'btn btn-primary' %> 
+    <% if current_user.id == @task.user_id %>
+      <%= link_to 'Edit Task', edit_task_path(@id), class: 'btn btn-primary' %> 
+    <% end %>
   </div>
 </div>
 <div class="row">
