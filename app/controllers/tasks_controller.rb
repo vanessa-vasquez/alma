@@ -35,6 +35,9 @@ class TasksController < ApplicationController
   end
 
   def create
+    if !user_signed_in?
+      return redirect_to root_path
+    end
     @task = Task.create!(task_params)
     flash[:notice] = "A task was successfully created."
     redirect_to my_profile_tasks_path
@@ -58,6 +61,9 @@ class TasksController < ApplicationController
   end
 
   def update
+    if !user_signed_in?
+      return redirect_to root_path
+    end
     @task = Task.find params[:id]
     @task.update_attributes!(task_params)
     flash[:notice] = "A task was successfully updated."
@@ -65,6 +71,9 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    if !user_signed_in?
+      return redirect_to root_path
+    end
     @task = Task.find(params[:id])
     @task.destroy
     flash[:notice] = "A task was deleted."
