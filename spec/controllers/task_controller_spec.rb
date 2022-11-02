@@ -15,10 +15,10 @@ describe TasksController do
       describe 'there are tasks' do 
         let!(:param) {{id: 500, name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 40, completed: false}}
         let!(:task) {Task.create!(param)}
-        it 'tasks are assigned' do 
+        it '@tasks is assigned' do 
           sign_in user
           get :index, :format => "html"
-          expect(assigns(:tasks)).to eql([task])
+          expect(assigns(:tasks)).to match_array([task])
         end 
       end 
     end
@@ -147,13 +147,26 @@ describe TasksController do
   end
 
   describe "PATCH #update" do
-    let!(:param) {{name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 1, completed: false}}
+    let!(:user) {User.create!({id: 50, email: 'ad45@columbia.edu', password: 'password12345', fname: 'Alison', lname: 'Doll', school: 'Columbia University'})}
+    let!(:param) {{id: 1, name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 1, completed: false}}
     let!(:task1) {Task.create!(param)}
 
-    context "with good data" do
-      it "updates the task" do
-        patch :update, id: task1.id, task: { name: "Senior Photos", hours: 3}
-        expect(response).to be_redirect
+    describe "user is signed in" do 
+      context "with good data" do
+        it "updates the task" do
+          sign_in user
+          patch :update, id: 1, task: { name: "Senior", hours: 3}
+          expect(assigns(:task)).to eq(task1)
+          expect(flash[:notice]).to match('A task was successfully updated.')
+          expect(response).to redirect_to(my_profile_tasks_path)
+        end
+      end
+    end
+
+    describe "user is signed out" do 
+      it "user is signed out" do
+        patch :update, id: 1, task: { name: "Senior", hours: 3}
+        expect(response).to redirect_to(root_path)
       end
     end
   end

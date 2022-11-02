@@ -25,10 +25,7 @@ class TasksController < ApplicationController
     else
       @tasks = []
     end
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
   end
 
   def new
@@ -39,14 +36,10 @@ class TasksController < ApplicationController
   end
 
   def create
-<<<<<<< Updated upstream
     if !user_signed_in?
       return redirect_to root_path
     end
-    @task = Task.create!(task_params)
-    flash[:notice] = "A task was successfully created."
-    redirect_to my_profile_tasks_path
-=======
+
     task = Task.new(task_params)
     valid = task.valid?
 
@@ -58,7 +51,6 @@ class TasksController < ApplicationController
       flash[:notice] = "A task was successfully created."
       return redirect_to my_profile_tasks_path
     end
->>>>>>> Stashed changes
   end
 
   def edit
@@ -79,9 +71,6 @@ class TasksController < ApplicationController
   end
 
   def update
-    if !user_signed_in?
-      return redirect_to root_path
-    end
     @task = Task.find params[:id]
     @task.update_attributes!(task_params)
     flash[:notice] = "A task was successfully updated."
@@ -89,9 +78,6 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    if !user_signed_in?
-      return redirect_to root_path
-    end
     @task = Task.find(params[:id])
     @task.destroy
     flash[:notice] = "A task was deleted."
