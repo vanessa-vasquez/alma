@@ -14,7 +14,7 @@ class TasksController < ApplicationController
     @location = @task.location
     @price = @task.price
   end
-
+ 
   def index
     if (!user_signed_in?)
       return redirect_to root_path
@@ -25,6 +25,10 @@ class TasksController < ApplicationController
     else
       @tasks = []
     end
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
   end
 
   def new
@@ -35,12 +39,26 @@ class TasksController < ApplicationController
   end
 
   def create
+<<<<<<< Updated upstream
     if !user_signed_in?
       return redirect_to root_path
     end
     @task = Task.create!(task_params)
     flash[:notice] = "A task was successfully created."
     redirect_to my_profile_tasks_path
+=======
+    task = Task.new(task_params)
+    valid = task.valid?
+
+    if !valid
+      flash[:warning] = task.errors.full_messages[0]
+      return redirect_to new_task_path
+    else
+      @task = Task.create(task_params)
+      flash[:notice] = "A task was successfully created."
+      return redirect_to my_profile_tasks_path
+    end
+>>>>>>> Stashed changes
   end
 
   def edit
