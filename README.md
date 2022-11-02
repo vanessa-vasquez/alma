@@ -20,3 +20,10 @@ Vanessa Vasquez - vv2317
 
 ## To project in development
 - Run 'bundle exec rails server'
+
+## Our Specs:
+- Ruby Version 2.6.6
+- macOS
+
+## Grading: 
+- The main branch or the proj-iter1 branch can be used for grading. 
