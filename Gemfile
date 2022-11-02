@@ -18,7 +18,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'cucumber-rails', require: false
   gem 'rspec-rails'
-
   gem 'pry'
   gem 'pry-byebug'
 
@@ -30,7 +29,7 @@ group :test do
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
   gem 'simplecov', :require => false
-  
+
 end
 
 group :production do
