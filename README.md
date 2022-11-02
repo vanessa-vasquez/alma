@@ -17,3 +17,6 @@ Vanessa Vasquez - vv2317
 ## To run tests
 - Run 'rake cucumber'
 - Run 'rspec spec'
+
+## To run tests
+- Run 'bundle exec rails server'
