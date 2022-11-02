@@ -1,8 +1,17 @@
-"canonical" solution to the Rails Intro homework against which to write your scenarios, and the necessary scaffolding for the first couple of scenarios
+# Group members
 
-Run bundle install
+Aditi Dam - ad3707
+Aysha Jamal - aj2604
+Elizabeth Walker - ejw2173
+Vanessa Vasquez - vv2317
 
-To run tests
-cucumber
+# Set up
 
-rake cucumber
+Run 'bundle install'
+Run 'rake db:seed'
+Run 'rake db:migrate'
+
+# To run tests
+
+Run 'rake cucumber'
+Run 'rspec spec'
