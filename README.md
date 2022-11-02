@@ -1,6 +1,7 @@
-# Alma
+# [Alma](https://almasaasproj.herokuapp.com/)
 
-Alma is a SaaS app that allows students to create and sign up for tasks within their own school community.
+Alma is a SaaS app that allows students to create and sign up for tasks within their own school community. <br />
+Visit our Heroku page [here](https://almasaasproj.herokuapp.com/).
 
 ## Group members
 Aditi Dam - ad3707 <br/>
@@ -16,3 +17,6 @@ Vanessa Vasquez - vv2317
 ## To run tests
 - Run 'rake cucumber'
 - Run 'rspec spec'
+
+## To project in development
+- Run 'bundle exec rails server'
