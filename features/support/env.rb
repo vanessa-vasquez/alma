@@ -5,6 +5,8 @@
 # files.
 
 require 'cucumber/rails'
+require 'simplecov'
+SimpleCov.start 'rails'
 
 # To avoid confusion on missed migrations - use Rails 4 checker to ensure
 # all migrations applied
