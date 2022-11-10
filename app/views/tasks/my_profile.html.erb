@@ -1,30 +1,43 @@
+<link rel="stylesheet" type="text/css" href="/app/stylesheets/application.css">
+
 <%= render 'shared/navbar' %>
 <div class="row">
     <div class="col-12 text-center">
         <h1>My Profile</h1>
     </div>
 </div>
-<div class="row">
-    <div class="col-12 text-center">
-        <%= link_to 'Create a New Task', new_task_path, class: 'btn btn-primary' %> 
-        <%= link_to 'Edit Profile', edit_user_registration_path, class: 'btn btn-primary' %>
+
+<div class= "info-section">
+    <div class="buttons_profile">
+        <div class="col-12 text-center">
+            <%= link_to 'Edit Profile', edit_user_registration_path, class: 'btn btn-primary' %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-7 info-box">
+            <h2>My Information</h2>
+            <%= @first_name %> <%= @last_name %> <br/>
+            <%= @email %>  <br/>
+            <%= @school %>
+        </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-3">
-        <h2>My Information</h2>
-        <%= @first_name %> <%= @last_name %> <br/>
-        <%= @email %>  <br/>
-        <%= @school %>
+
+<div class="tasks-section">
+    <div class="buttons_profile">
+        <div class="col-12 text-center">
+            <%= link_to 'Create a New Task', new_task_path, class: 'btn btn-primary' %> 
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-6">
-        <h2>My Tasks</h2>
-        <ul>
-            <% @my_tasks.each do |t| %>
-                <li><%= link_to t.name, task_path(t.id) %></li>
-            <% end %>
-        </ul>
+
+    <div class="row">
+        <div class="col-7 my-tasks-box">
+            <h2>My Tasks</h2>
+            <ul>
+                <% @my_tasks.each do |t| %>
+                    <li><%= link_to t.name, task_path(t.id) %></li>
+                <% end %>
+            </ul>
+        </div>
     </div>
 </div>
