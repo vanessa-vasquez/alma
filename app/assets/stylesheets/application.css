@@ -67,3 +67,11 @@
  .tasks-section {
     margin-top:100px;
  }
+
+ .card-body {
+    background-color:#78b3e0;
+ }
+
+ .card {
+    margin-top: 50px;
+ }
