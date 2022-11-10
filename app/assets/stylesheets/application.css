@@ -23,3 +23,23 @@
     margin-top: 100px;
  }
 
+ .form {
+    background-color: #78b3e0;
+    padding: 20px;
+ }
+ 
+ .actions{
+    margin-top: 50px;
+    text-align: center;
+ }
+
+
+ .header {
+    text-align: center;
+ }
+
+
+ .field {
+    margin-left: 30px;
+    margin-bottom: 30px;
+ }
