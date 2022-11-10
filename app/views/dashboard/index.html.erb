@@ -1,7 +1,12 @@
 <!--  This file is app/views/dashboard/index.html.erb -->
+<html>
+<link rel="stylesheet" type="text/css" href="/app/stylesheets/application.css">
+
+<body>
+
 <div class="row">
-    <div class="col-12 text-center">
-    alma
+    <div class="col-12 title">
+    Alma
     </div>
 </div>
 <div class="row">
@@ -9,7 +14,7 @@
     because your tasks matter
     </div>
 </div>
-<div class="row">
+<div class="row3">
     <div class="col-12 text-center">
         <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary' %>
         <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary' %>
@@ -17,3 +22,5 @@
 </div>
 
 
+</body>
+</html>
