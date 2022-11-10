@@ -2,42 +2,40 @@
 
 <%= render 'shared/navbar' %>
 <div class="row">
-    <div class="col-12 text-center">
+    <div class="col-12 text-center" id="profile-title">
         <h1>My Profile</h1>
     </div>
 </div>
 
-<div class= "info-section">
-    <div class="buttons_profile">
-        <div class="col-12 text-center">
-            <%= link_to 'Edit Profile', edit_user_registration_path, class: 'btn btn-primary' %>
-        </div>
+<div class="row" id="account-info">
+    <div class = "col-md-3">
+    <img src = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png" width="200"></img>
     </div>
-    <div class="row">
-        <div class="col-7 info-box">
-            <h2>My Information</h2>
-            <%= @first_name %> <%= @last_name %> <br/>
-            <%= @email %>  <br/>
-            <%= @school %>
-        </div>
+    <div class = "col-md-5">
+        <h2>Account Information</h2>
+        <b>Name: </b><%= @first_name %> <%= @last_name %> <br/>
+        <b>Email:</b> <%= @email %>  <br/>
+        <b>University:</b> <%= @school %>
+    </div>
+    <div class = "col-md-3">
+    <%= link_to 'Edit', edit_user_registration_path, class: 'btn btn-primary' %>
     </div>
 </div>
 
 <div class="tasks-section">
-    <div class="buttons_profile">
-        <div class="col-12 text-center">
-            <%= link_to 'Create a New Task', new_task_path, class: 'btn btn-primary' %> 
-        </div>
-    </div>
-
     <div class="row">
-        <div class="col-7 my-tasks-box">
-            <h2>My Tasks</h2>
-            <ul>
+        <div class="col-2.5">
+            <h2>Tasks Requested</h2>
+        </div>
+        <div class = "col-9.5">
+            <%= link_to 'New Task', new_task_path, class: 'btn btn-primary' %> 
+        </div>
+        <div class = "col-8">
                 <% @my_tasks.each do |t| %>
-                    <li><%= link_to t.name, task_path(t.id) %></li>
+                <div class ="task-prof">
+                    <%= link_to t.name, task_path(t.id) %>
+                </div>
                 <% end %>
-            </ul>
         </div>
     </div>
 </div>

@@ -1,4 +1,6 @@
-
+.container{
+   padding-bottom: 20px;
+}
  .btn-primary {
     background-color: #78b3e0;
     border-color: #78b3e0;
@@ -38,43 +40,51 @@
  .header {
     text-align: center;
  }
-
-
+.jumbotron{
+   margin: 0px;
+   background: none;
+}
  .field {
     margin-left: 30px;
     margin-bottom: 30px;
  }
-
- .buttons_profile {
-    float:left;
-    margin-top: 50px;
+ #profile-title{
+   margin-top: 20px;
+}
+ #account-info {
+    border-radius:10px;
+    padding: 20px;
+    margin: 10px;
  }
-
- .info-box {
-    background-color: #e6f2ff;
-    height: 150px;
-    margin-left: 100px;
-    text-align: center;
+ .task-prof{
+   margin: 20px;
+   padding: 20px;
+   background-color: #f2f3f4;
+   border-radius: 25px;
  }
  .my-tasks-box {
     background-color: #ccf2ff;
+    border-radius:10px;
     margin-top: 50px;
     margin-left: 100px;
  }
-
  .info-section {
     margin-top: 50px;
  }
  .tasks-section {
     margin-top:100px;
  }
-
+#index-title{
+   margin-top: 20px;
+}
  .card-body {
     background-color:#78b3e0;
+    border-radius:10px;
  }
 
  .card {
     margin-top: 50px;
+    border-radius:10px;
  }
 
  .btn-create {
