@@ -26,6 +26,20 @@
           <%= link_to 'Sort By Newest', tasks_path(:sort=>"created_at_new"), id: 'date_header_new' %>
         </div>
       </div>
+
+      <div class="<%=@sort_high_low_price_header%>">
+          <%= link_to 'high to low price', tasks_path(:sort=>"highest_to_lowest_pay"), id: 'price_header_new' %>
+        </div>
+      </div>
+
+
+      <div class="<%=@sort_low_high_price_header%>">
+          <%= link_to 'low to high price', tasks_path(:sort=>"lowest_to_highest_pay"), id: 'price_header_new' %>
+        </div>
+      </div>
+
+
+
       <% if @tasks.length == 0 %>
         <div class="col-12 text-center">
           There are no tasks available at the moment.
