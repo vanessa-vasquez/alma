@@ -89,6 +89,7 @@
 
  .btn-create {
     background-color: #3366ff;
+    color:white;
     margin-top: 50px;
  }
 
@@ -96,3 +97,18 @@
     margin-top: 100px;
     margin-bottom: 50px;
  }
+ .task-info{
+   background-color: #ccf2ff;
+   border-radius: 10px;
+   padding:20px;
+   margin-top: 20px;
+ }
+ .edit-task{
+   margin-top: 20px;
+ }
+ .descriptor{
+   margin: 10px;
+ }
+.top-header{
+   margin-top: 20px;
+}

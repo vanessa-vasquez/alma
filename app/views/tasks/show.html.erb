@@ -1,15 +1,32 @@
+<link rel="stylesheet" type="text/css" href="/app/stylesheets/application.css">
 <%= render 'shared/navbar' %>
 <div class="row">
-  <div class="col-12 text-center">
-    <h1><%=@name%></h1>
-    <%= link_to 'Edit Task', edit_task_path(@id), class: 'btn btn-primary' %> 
+  <div class="col-12 text-center top-header">
+    <h1>Task: <%=@name%></h1>
   </div>
 </div>
 <div class="row">
-     <div class="col-12">
-        Description: <%=@description%> <br/>
-        Time Needed: <%=@hours%> hr(s)<br/>
-        Location: <%=@location%> <br/>
-        Price: $<%=@price%> <br/>
-     </div>
+  <div class ="col-3">
+  </div>
+  <div class="task-info col-6">
+      <div class = "descriptor">
+        <b>Description</b>: <%=@description%>
+      </div>
+      <div class = "descriptor">
+        <b>Time Needed</b>: <%=@hours%> hr(s)
+      </div>
+      <div class = "descriptor">
+        <b>Location:</b> <%=@location%>
+      </div>
+      <div class = "descriptor">
+        <b>Price:</b> $<%=@price%>
+      </div>
+  </div>
+  <div class ="col-3">
+  </div>
+</div>
+<div class="row">
+  <div class="col-12 text-center edit-task">
+    <%= link_to 'Edit Task', edit_task_path(@id), class: 'btn btn-primary' %> 
+  </div>
 </div>
