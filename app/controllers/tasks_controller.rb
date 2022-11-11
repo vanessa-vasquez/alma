@@ -13,6 +13,7 @@ class TasksController < ApplicationController
     @hours = @task.hours
     @location = @task.location
     @price = @task.price
+    @created_at = @task.created_at
   end
  
   def index
@@ -26,6 +27,31 @@ class TasksController < ApplicationController
       @tasks = []
     end
 
+    if (params[:sort] != nil)
+      @sort = params[:sort]
+    elsif (session[:sort] != nil)
+      @sort = session[:sort]
+      redirect_to movies_path(sort: @sort, ratings: Hash[*@ratings_to_show.collect {|v| [v, 1]}.flatten]) and return
+    end
+
+    if (@sort == "date")
+      @movie_title_header = 'hilite bg-warning'
+    end
+    # @sort_by = sort_by
+    # session['sort_by'] = @sort_by
+
+  end
+
+  def sort_by
+    params[:sort_by] || session[:sort_by] || 'id'
+  end
+
+  def force_index_redirect
+    if !params.key?(:sort_by)
+      flash.keep
+      url = root_path(sort_by: sort_by)
+      redirect_to url
+    end
   end
 
   def new
@@ -48,6 +74,7 @@ class TasksController < ApplicationController
       return redirect_to new_task_path
     else
       @task = Task.create(task_params)
+      @created_at = Time.now
       flash[:notice] = "A task was successfully created."
       return redirect_to my_profile_tasks_path
     end
@@ -68,6 +95,7 @@ class TasksController < ApplicationController
     @hours = @task.hours
     @location = @task.location
     @price = @task.price
+    
   end
 
   def update
@@ -75,6 +103,7 @@ class TasksController < ApplicationController
       return redirect_to root_path 
     end
     @task = Task.find params[:id]
+    @created_at = Time.now
     @task.update_attributes!(task_params)
     flash[:notice] = "A task was successfully updated."
     redirect_to my_profile_tasks_path
@@ -105,6 +134,6 @@ class TasksController < ApplicationController
 
   private
   def task_params
-      params.require(:task).permit(:name, :hours, :location, :price, :description, :user_id)
+      params.require(:task).permit(:name, :hours, :location, :price, :description, :user_id, :created_at)
   end
 end
