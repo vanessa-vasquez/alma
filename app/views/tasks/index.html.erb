@@ -1,6 +1,5 @@
 <link rel="stylesheet" type="text/css" href="/app/stylesheets/application.css">
 
-
 <%= render 'shared/navbar' %>
 <div class = "container">
 <div class="row">
@@ -59,7 +58,7 @@
               <p class="card-text font-weight-bold">Time Needed: <%= t.hours %> hr(s)</p>
               <p class="card-text font-weight-bold">Location: <%= t.location %></p>
               <p class="card-text font-weight-bold">Pay: $<%= t.price %></p>
-              <p class="card-text font-weight-bold">Created At: <%= t.created_at %></p>
+              <p class="card-text font-weight-bold">Posted <%= time_ago_in_words(t.created_at) %> ago</p>
 
             </div>
           </div>
