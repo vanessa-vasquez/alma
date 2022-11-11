@@ -8,6 +8,11 @@
     <h1>Tasks</h1>
   </div>
 </div>
+
+<th class = "<%=@sort_date_header%>">
+<%= link_to 'Sort By Date', root_path(sort:"created_at"), id: 'date_header' %></th>
+
+
 <div class="row">
       <% @tasks.each do |t| %>
         <div class="col-4">

@@ -17,6 +17,7 @@ class TasksController < ApplicationController
   end
  
   def index
+
     if (!user_signed_in?)
       return redirect_to root_path
     end
@@ -31,28 +32,33 @@ class TasksController < ApplicationController
       @sort = params[:sort]
     elsif (session[:sort] != nil)
       @sort = session[:sort]
-      redirect_to movies_path(sort: @sort, ratings: Hash[*@ratings_to_show.collect {|v| [v, 1]}.flatten]) and return
+      redirect_to root_path(sort: @sort) and return
+    end
+  
+    if (@sort == "created_at")
+      @sort_date_header = 'hilite bg-warning'
+      puts "HELLO"
     end
 
-    if (@sort == "date")
-      @movie_title_header = 'hilite bg-warning'
+    if (@sort == nil)
+      puts "SORT NOT WORKING"
     end
-    # @sort_by = sort_by
-    # session['sort_by'] = @sort_by
 
-  end
-
-  def sort_by
-    params[:sort_by] || session[:sort_by] || 'id'
-  end
-
-  def force_index_redirect
-    if !params.key?(:sort_by)
-      flash.keep
-      url = root_path(sort_by: sort_by)
-      redirect_to url
+    if (@sort != nil)
+      @tasks = @tasks.order(created_at: :desc)
     end
+
+    session[:sort] = @sort
   end
+
+
+  # def force_index_redirect
+  #   if !params.key?(:sort_by)
+  #     flash.keep
+  #     url = root_path(sort_by: sort_by)
+  #     redirect_to url
+  #   end
+  # end
 
   def new
     if !user_signed_in?
@@ -95,6 +101,7 @@ class TasksController < ApplicationController
     @hours = @task.hours
     @location = @task.location
     @price = @task.price
+    @created_at = Time.now
     
   end
 
@@ -103,7 +110,7 @@ class TasksController < ApplicationController
       return redirect_to root_path 
     end
     @task = Task.find params[:id]
-    @created_at = Time.now
+    #@created_at = Time.now
     @task.update_attributes!(task_params)
     flash[:notice] = "A task was successfully updated."
     redirect_to my_profile_tasks_path
