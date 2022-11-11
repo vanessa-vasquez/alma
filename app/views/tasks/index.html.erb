@@ -9,8 +9,9 @@
   </div>
 </div>
 
-<th class = "<%=@sort_date_header%>">
-<%= link_to 'Sort By Date', root_path(sort:"created_at"), id: 'date_header' %></th>
+<div class="<%=@sort_date_header%>">
+  <%= link_to 'Sort By Date', tasks_path(:sort=>"created_at"), id: 'date_header' %>
+</div>
 
 
 <div class="row">

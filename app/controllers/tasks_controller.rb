@@ -17,7 +17,6 @@ class TasksController < ApplicationController
   end
  
   def index
-
     if (!user_signed_in?)
       return redirect_to root_path
     end
@@ -32,16 +31,11 @@ class TasksController < ApplicationController
       @sort = params[:sort]
     elsif (session[:sort] != nil)
       @sort = session[:sort]
-      redirect_to root_path(sort: @sort) and return
+      return redirect_to tasks_path(sort: @sort)
     end
   
     if (@sort == "created_at")
       @sort_date_header = 'hilite bg-warning'
-      puts "HELLO"
-    end
-
-    if (@sort == nil)
-      puts "SORT NOT WORKING"
     end
 
     if (@sort != nil)
@@ -141,6 +135,6 @@ class TasksController < ApplicationController
 
   private
   def task_params
-      params.require(:task).permit(:name, :hours, :location, :price, :description, :user_id, :created_at)
+      params.require(:task).permit(:name, :hours, :location, :price, :description, :user_id, :sort)
   end
 end
