@@ -1,118 +1,132 @@
-.container{
-   padding-bottom: 20px;
+.container {
+  padding-bottom: 20px;
 }
- .btn-primary {
-    background-color: #78b3e0;
-    border-color: #78b3e0;
-    border-radius:10px;
-    width: 100px;
-    margin-left: 40px;
-    margin-right: 20px;
-    color: black;
- }
 
- .title {
-    font-size: 120px;
-    text-align: center;
-    margin-top: 120px; 
- }
-
- .text-center {
-    font-size: 20px;
- }
-
- .row3 {
-    margin-top: 100px;
- }
-
- .form {
-    background-color: #78b3e0;
-    padding: 20px;
-    margin-top: 50px;
-    border-radius: 10px;
- }
- 
- .actions{
-    margin-top: 50px;
-    text-align: center;
- }
-
-
- .header {
-    text-align: center;
- }
-.jumbotron{
-   margin: 0px;
-   background: none;
+.btn-primary {
+  background-color: #78b3e0;
+  border-color: #78b3e0;
+  border-radius: 10px;
+  width: 100px;
+  margin-left: 40px;
+  margin-right: 20px;
+  color: black;
 }
- .field {
-    margin-left: 30px;
-    margin-bottom: 30px;
- }
- #profile-title{
-   margin-top: 20px;
-}
- #account-info {
-    border-radius:10px;
-    padding: 20px;
-    margin: 10px;
- }
- .task-prof{
-   margin: 20px;
-   padding: 20px;
-   background-color: #f2f3f4;
-   border-radius: 25px;
- }
- .my-tasks-box {
-    background-color: #ccf2ff;
-    border-radius:10px;
-    margin-top: 50px;
-    margin-left: 100px;
- }
- .info-section {
-    margin-top: 50px;
- }
- .tasks-section {
-    margin-top:100px;
- }
-#index-title{
-   margin-top: 20px;
-}
- .card-body {
-    background-color:#78b3e0;
-    border-radius:10px;
- }
 
- .card {
-    margin-top: 50px;
-    border-radius:10px;
- }
-
- .btn-create {
-    background-color: #3366ff;
-    color:white;
-    margin-top: 50px;
- }
-
- .cancel {
-    margin-top: 100px;
-    margin-bottom: 50px;
- }
- .task-info{
-   background-color: #ccf2ff;
-   border-radius: 10px;
-   padding:20px;
-   margin-top: 20px;
- }
- .edit-task{
-   margin-top: 20px;
- }
- .descriptor{
-   margin: 10px;
- }
-.top-header{
-   margin-top: 20px;
+.filter-btn {
+  background-color: #d9d9d9;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  color: black;
+  text-decoration: none;
+  transition-duration: 0.1s;
 }
-form{
-   border-radius: 10px;
+
+.filter-btn:hover {
+  background-color: #78b3e0;
+}
+
+.title {
+  font-size: 120px;
+  text-align: center;
+  margin-top: 120px;
+}
+
+.text-center {
+  font-size: 20px;
+}
+
+.row3 {
+  margin-top: 100px;
+}
+
+.form {
+  background-color: #78b3e0;
+  padding: 20px;
+  margin-top: 50px;
+  border-radius: 10px;
+}
+
+.actions {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.header {
+  text-align: center;
+}
+.jumbotron {
+  margin: 0px;
+  background: none;
+}
+.field {
+  margin-left: 30px;
+  margin-bottom: 30px;
+}
+#profile-title {
+  margin-top: 20px;
+}
+#account-info {
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+}
+.task-prof {
+  margin: 20px;
+  padding: 20px;
+  background-color: #f2f3f4;
+  border-radius: 25px;
+}
+.my-tasks-box {
+  background-color: #ccf2ff;
+  border-radius: 10px;
+  margin-top: 50px;
+  margin-left: 100px;
+}
+.info-section {
+  margin-top: 50px;
+}
+.tasks-section {
+  margin-top: 100px;
+}
+#index-title {
+  margin-top: 20px;
+}
+.card-body {
+  background-color: #78b3e0;
+  border-radius: 10px;
+}
+
+.card {
+  margin-top: 50px;
+  border-radius: 10px;
+}
+
+.btn-create {
+  background-color: #3366ff;
+  color: white;
+  margin-top: 50px;
+}
+
+.cancel {
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+.task-info {
+  background-color: #ccf2ff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+}
+.edit-task {
+  margin-top: 20px;
+}
+.descriptor {
+  margin: 10px;
+}
+.top-header {
+  margin-top: 20px;
+}
+form {
+  border-radius: 10px;
 }
