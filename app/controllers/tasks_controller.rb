@@ -34,25 +34,20 @@ class TasksController < ApplicationController
       return redirect_to tasks_path(sort: @sort)
     end
   
-    if (@sort == "created_at")
-      @sort_date_header = 'hilite bg-warning'
-    end
-
-    if (@sort != nil)
+    if (@sort == "created_at_old")
+      @sort_oldest_date_header = 'hilite bg-info col-2'
+      @tasks = @tasks.order(created_at: :asc)
+    elsif (@sort == "created_at_new")
+      @sort_recent_date_header = 'hilite bg-info col-2'
       @tasks = @tasks.order(created_at: :desc)
     end
 
+    # if (@sort != nil)
+    #   @tasks = @tasks.order(created_at: :desc)
+    # end
+
     session[:sort] = @sort
   end
-
-
-  # def force_index_redirect
-  #   if !params.key?(:sort_by)
-  #     flash.keep
-  #     url = root_path(sort_by: sort_by)
-  #     redirect_to url
-  #   end
-  # end
 
   def new
     if !user_signed_in?
@@ -104,7 +99,6 @@ class TasksController < ApplicationController
       return redirect_to root_path 
     end
     @task = Task.find params[:id]
-    #@created_at = Time.now
     @task.update_attributes!(task_params)
     flash[:notice] = "A task was successfully updated."
     redirect_to my_profile_tasks_path
