@@ -21,24 +21,6 @@ describe TasksController do
           expect(assigns(:tasks)).to match_array([task])
         end 
       end 
-
-      # describe "sort tasks by newest to oldest" do
-      #   let!(:user1) {User.create!({id: 60, email: 'zz25@columbia.edu', password: 'password123456', fname: 'Kelsey', lname: 'John', school: 'Columbia University', confirmed_at: "2017-05-26 14:00:00 +0800"})}
-      #   let!(:param1) {{id: 1, name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 100, description: 'Seeking experienced photographer for Senior pics!', user_id: 60, completed: false, created_at: "2022-11-10 14:00:00 +0800"}}
-      #   let!(:task1) {Task.create!(param1)}
-    
-      #   let!(:user2) {User.create!({id: 61, email: 'gh25@columbia.edu', password: 'password123456', fname: 'Kelsey', lname: 'John', school: 'Columbia University', confirmed_at: "2017-05-26 14:00:00 +0800"})}
-      #   let!(:param2) {{id: 2, name: 'Pick up mail', hours: 1, deadline: DateTime.new(2022,12,6), location: 'Wien Mail Center', price: 10, description: 'Can someone pick up my mail from the mail center', user_id: 61, completed: false, created_at: "2022-11-11 14:00:00 +0800"}}
-      #   let!(:task2) {Task.create!(param2)}
-        
-      #   it "should have tasks in right order" do
-      #       sign_in user1
-      #       sign_in user2
-      #       get :index, :format => "html"
-      #       expect(assigns(:tasks)).to match_array([task2, task1])
-      #   end
-      # end
-
     end
 
     describe 'user is not signed in' do
