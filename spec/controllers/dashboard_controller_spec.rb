@@ -9,7 +9,7 @@ describe DashboardController do
         describe 'user is signed in' do
             let!(:user) {User.create!({id: 40, email: 'zg25@columbia.edu', password: 'password123', fname: 'Zeek', lname: 'Roll', school: 'Columbia University'})}
             it "checks if user is signed in and redirects" do
-                user1 = User.create(email: 'ad25@columbia.edu', password: 'CatsAreKool1', fname: 'Adam', lname: 'Daniels', school: 'Columbia University')
+                user1 = User.create(email: 'ad25@columbia.edu', password: 'CatsAreKool1', fname: 'Adam', lname: 'Daniels', school: 'Columbia University', confirmed_at: "2017-05-26 14:00:00 +0800")
                 sign_in user1
                 get :index
                 expect(response).to redirect_to(tasks_path)
