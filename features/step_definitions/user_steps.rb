@@ -34,4 +34,8 @@ Given /there are tasks posted by other users/ do
   })
   Task.create!({name: 'Need brownie pan', hours: 3, deadline: DateTime.new(2022,12,6), location: 'Carman Floor 5 Kitchen', price: 3,
     description: 'I am making brownies for my friends and need a pan!', user_id: 2, completed: false})
+  Task.create!({name: 'Wall painting', hours: 3, deadline: DateTime.new(2022,12,6), location: 'Wallach 502', price: 35,
+  description: 'I need help painting the wall of my dorm room.', user_id: 2, completed: false})
+  Task.create!({name: 'Need help with club fair', hours: 3, deadline: DateTime.new(2022,12,6), location: 'Low Steps', price: 300,
+  description: 'Need help making posters for the club fair.', user_id: 2, completed: false})
 end
