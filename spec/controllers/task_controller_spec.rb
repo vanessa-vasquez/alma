@@ -3,7 +3,7 @@ require 'rails_helper'
 describe TasksController do 
   describe 'index #index' do
     describe 'user is signed in' do
-      let!(:user) {User.create!({id: 40, email: 'zg25@columbia.edu', password: 'password123', fname: 'Zeek', lname: 'Roll', school: 'Columbia University'})}
+      let!(:user) {User.create!({id: 40, email: 'zg25@columbia.edu', password: 'password123', fname: 'Zeek', lname: 'Roll', school: 'Columbia University', confirmed_at: "2017-05-26 14:00:00 +0800"})}
 
       describe 'there are no tasks' do
         it "renders the index template" do
@@ -13,7 +13,7 @@ describe TasksController do
       end
 
       describe 'there are tasks' do 
-        let!(:param) {{id: 500, name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 40, completed: false}}
+        let!(:param) {{id: 500, name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 40, completed: false }}
         let!(:task) {Task.create!(param)}
         it '@tasks is assigned' do 
           sign_in user
@@ -36,7 +36,7 @@ describe TasksController do
     let!(:task) {Task.create!(param)}
 
     describe 'user is signed in' do
-      let!(:user) {User.create!({id: 40, email: 'zg25@columbia.edu', password: 'password123', fname: 'Zeek', lname: 'Roll', school: 'Columbia University'})}
+      let!(:user) {User.create!({id: 40, email: 'zg25@columbia.edu', password: 'password123', fname: 'Zeek', lname: 'Roll', school: 'Columbia University', confirmed_at: "2017-05-26 14:00:00 +0800"})}
 
       it 'finds the task' do
         sign_in user
@@ -64,7 +64,7 @@ describe TasksController do
     let!(:task1) {Task.create!(param)}
 
     describe 'user is signed in' do
-      let!(:user) {User.create!({id: 40, email: 'zg25@columbia.edu', password: 'password123', fname: 'Zeek', lname: 'Roll', school: 'Columbia University'})}
+      let!(:user) {User.create!({id: 40, email: 'zg25@columbia.edu', password: 'password123', fname: 'Zeek', lname: 'Roll', school: 'Columbia University', confirmed_at: "2017-05-26 14:00:00 +0800"})}
       context "with valid attributes" do
         it "creates a new task" do
           sign_in user
@@ -86,7 +86,7 @@ describe TasksController do
   end
   
   describe 'Edit' do
-    let!(:user) {User.create!({id: 50, email: 'ad45@columbia.edu', password: 'password12345', fname: 'Alison', lname: 'Doll', school: 'Columbia University'})}
+    let!(:user) {User.create!({id: 50, email: 'ad45@columbia.edu', password: 'password12345', fname: 'Alison', lname: 'Doll', school: 'Columbia University', confirmed_at: "2017-05-26 14:00:00 +0800"})}
     let!(:param) {{name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 50, completed: false}}
     let!(:task) {Task.create!(param)}
 
@@ -117,7 +117,7 @@ describe TasksController do
     let!(:task) {Task.create!(param)}
 
     describe 'user is signed in' do
-      let!(:user) {User.create!({id: 50, email: 'ad45@columbia.edu', password: 'password12345', fname: 'Alison', lname: 'Doll', school: 'Columbia University'})}
+      let!(:user) {User.create!({id: 50, email: 'ad45@columbia.edu', password: 'password12345', fname: 'Alison', lname: 'Doll', school: 'Columbia University', confirmed_at: "2017-05-26 14:00:00 +0800"})}
 
       it 'deletes a task' do
         sign_in user
@@ -135,7 +135,7 @@ describe TasksController do
 
   describe 'NEW #new' do
     it "gets the user id" do
-      user3 = User.create(email: 'dt30@columbia.edu', password: 'CatsAreKool1', fname: 'Adam', lname: 'Daniels', school: 'Columbia University')
+      user3 = User.create(email: 'dt30@columbia.edu', password: 'CatsAreKool1', fname: 'Adam', lname: 'Daniels', school: 'Columbia University', confirmed_at: "2017-05-26 14:00:00 +0800")
       sign_in user3
       get :new, user_id: user3.id
     end
@@ -147,7 +147,7 @@ describe TasksController do
   end
 
   describe "PATCH #update" do
-    let!(:user) {User.create!({id: 50, email: 'ad45@columbia.edu', password: 'password12345', fname: 'Alison', lname: 'Doll', school: 'Columbia University'})}
+    let!(:user) {User.create!({id: 50, email: 'ad45@columbia.edu', password: 'password12345', fname: 'Alison', lname: 'Doll', school: 'Columbia University', confirmed_at: "2017-05-26 14:00:00 +0800"})}
     let!(:param) {{id: 1, name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 1, completed: false}}
     let!(:task1) {Task.create!(param)}
 
@@ -173,7 +173,7 @@ describe TasksController do
 
 
   describe "#my_profile" do
-    let!(:user) {User.create!({id: 60, email: 'kj25@columbia.edu', password: 'password123456', fname: 'Kelsey', lname: 'John', school: 'Columbia University'})}
+    let!(:user) {User.create!({id: 60, email: 'kj25@columbia.edu', password: 'password123456', fname: 'Kelsey', lname: 'John', school: 'Columbia University', confirmed_at: "2017-05-26 14:00:00 +0800"})}
     let!(:param) {{name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 60, completed: false}}
     let!(:task1) {Task.create!(param)}
 
