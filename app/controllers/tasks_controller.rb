@@ -22,16 +22,13 @@ class TasksController < ApplicationController
     end
 
     if Task.joins(:user).exists?(:users => {school: current_user.school})
-      @tasks = Task.joins(:user).where(:users => {school: current_user.school})
+      @tasks = Task.find_tasks(current_user.school, params[:pay])
     else
       @tasks = []
     end
 
     if (params[:sort] != nil)
       @sort = params[:sort]
-    elsif (session[:sort] != nil)
-      @sort = session[:sort]
-      return redirect_to tasks_path(sort: @sort)
     end
   
     if (@sort == "created_at_old")

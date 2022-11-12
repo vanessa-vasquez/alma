@@ -10,21 +10,21 @@
 
 <div class="row">
       <div class="col-3">
-        <div class = "row top-header">
+        <div class = "top-header">
           <h3> Filter </h3> 
         </div>
-        <div class = "row">
+        <div>
           <%= link_to 'Less than $20', tasks_path(:pay=>"less_than_20"), class: 'btn filter-btn' %> <br/>
           <%= link_to '$20-$50', tasks_path(:pay=>"20-50"), class: 'btn filter-btn' %> <br/>
           <%= link_to 'More than $50', tasks_path(:pay=>"over_50"), class: 'btn filter-btn' %>
         </div>
-        <div class = "row top-header">
+        <div class = "top-header">
           <h3> Sort </h3>
         </div>
-        <div class = "row">
+        <div>
           <div><b>Date</b></div>
         </div>
-        <div class = "row">
+        <div>
           <div class = "<%=@sort_oldest_date_header%>">
             <%= link_to 'Sort By Oldest', tasks_path(:sort=>"created_at_old"), id: 'date_header_old', class: 'btn filter-btn' %>
           </div>
@@ -32,15 +32,15 @@
              <%= link_to 'Sort By Newest', tasks_path(:sort=>"created_at_new"), id: 'date_header_new', class: 'btn filter-btn' %>
           </div>
         </div>
-        <div class = "row">
-          <div>Price</div>
+        <div>
+          <div><b>Price</b></div>
         </div>
-        <div class = "row">
+        <div>
           <div class = "<%=@sort_low_high_price_header%>">
-            <%= link_to 'Sort Price Low to High price', tasks_path(:sort=>"lowest_to_highest_pay"), id: 'price_header_new', class: 'btn filter-btn' %>
+            <%= link_to 'Sort Low to High', tasks_path(:sort=>"lowest_to_highest_pay"), id: 'price_header_new', class: 'btn filter-btn' %>
           </div>
           <div class = "<%=@sort_high_low_price_header%>">
-            <%= link_to 'Sort Price High to Low price', tasks_path(:sort=>"highest_to_lowest_pay"), id: 'price_header_new', class: 'btn filter-btn' %>
+            <%= link_to 'Sort High to Low', tasks_path(:sort=>"highest_to_lowest_pay"), id: 'price_header_new', class: 'btn filter-btn' %>
           </div>
         </div>
       </div>
