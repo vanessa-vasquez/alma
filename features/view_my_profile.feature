@@ -11,7 +11,7 @@ Background: user is logged in
 
 Scenario: view my user information
     When I go to My Profile page
-    Then I should see "My Information"
+    Then I should see "Account Information"
     And I should see "Sally Jenkins"
     And I should see "sj1234@columbia.edu"
     And I should see "Columbia University"

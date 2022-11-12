@@ -5,7 +5,8 @@ Given /I am a valid user/ do
         :lname => "Jenkins",
         :password => "12345678",
         :email => "sj1234@columbia.edu",
-        :school => "Columbia University"
+        :school => "Columbia University",
+        :confirmed_at => Time.now
       })
 end
 

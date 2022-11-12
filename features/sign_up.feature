@@ -1,14 +1,13 @@
 Feature: sign up user
-
     As a Columbia student
     So that I can get help for my tasks
     I want to sign up for Alma 
 
 Background: app is opened to home page
-
     Given I am on the home page
     When I follow "Sign Up"
     Then I should be on the sign up page
+
 Scenario: make an account successfully (verified via authentication)
     Given I am on the sign up page
     When I fill in "First Name" with "Alma"
@@ -18,7 +17,8 @@ Scenario: make an account successfully (verified via authentication)
     And I fill in "Password" with "SecretOwl"
     And I fill in "Password confirmation" with "SecretOwl"
     When I press "Sign up"
-    Then I should be on the All Tasks page
+    Then I should be on the home page
+    And I should see "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account."
 
 Scenario: unsuccessful attempt at making an account (non university email)
     Given I am on the sign up page
