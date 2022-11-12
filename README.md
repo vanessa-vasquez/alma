@@ -13,10 +13,11 @@ Vanessa Vasquez - vv2317
 - Run 'bundle install'
 - Run 'rake db:seed'
 - Run 'rake db:migrate'
+- Run 'gem install mailcatcher'
 
 ## To run tests
 - Run 'rake cucumber'
 - Run 'rspec spec'
 
-## To project in development
+## To run project in development
 - Run 'bundle exec rails server'
