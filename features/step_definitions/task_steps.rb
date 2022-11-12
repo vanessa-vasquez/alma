@@ -1,29 +1,20 @@
-# Add a declarative step here for populating the DB with movies.
 
-Given /the following movies exist/ do |movies_table|
-  movies_table.hashes.each do |movie|
-    # each returned element will be a hash whose key is the table header.
-    # you should arrange to add that movie to the database here.
+
+Given /the following tasks exist/ do |tasks_table|
+  tasks_table.hashes.each do |task|
+    Task.create!(task)
   end
-  pending "Fill in this step in movie_steps.rb"
 end
 
-Then /(.*) seed movies should exist/ do | n_seeds |
-  expect(Movie.count).to eq n_seeds.to_i
+Then /(.*) seed tasks should exist/ do | n_seeds |
+  expect(Task.count).to eq n_seeds.to_i
 end
-
-# Make sure that one string (regexp) occurs before or after another one
-#   on the same page
 
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
-  #  ensure that that e1 occurs before e2.
-  #  page.body is the entire content of the page as a string.
-  pending "Fill in this step in movie_steps.rb"
+  regexp = /#{e1}.*#{e2}/m 
+  
+  expect(page.body).to match(regexp)
 end
-
-# Make it easier to express checking or unchecking several boxes at once
-#  "When I uncheck the following ratings: PG, G, R"
-#  "When I check the following ratings: G"
 
 When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
   # HINT: use String#split to split up the rating_list, then
@@ -32,13 +23,12 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
   pending "Fill in this step in movie_steps.rb"
 end
 
-# Part 2, Step 3
 Then /^I should (not )?see the following movies: (.*)$/ do |no, movie_list|
   # Take a look at web_steps.rb Then /^(?:|I )should see "([^"]*)"$/
   pending "Fill in this step in movie_steps.rb"
 end
 
-Then /I should see all the movies/ do
+Then /I should see all the tasks/ do
   # Make sure that all the movies in the app are visible in the table
   pending "Fill in this step in movie_steps.rb"
 end

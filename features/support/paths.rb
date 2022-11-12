@@ -21,6 +21,9 @@ module NavigationHelpers
     when /^the Edit Task page for "(.+)"$/ then edit_task_path(Task.find_by(name:$1).id)
     when /^the login page$/ then new_user_session_path
     when /^the sign up page$/ then new_user_registration_path
+  
+
+
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
