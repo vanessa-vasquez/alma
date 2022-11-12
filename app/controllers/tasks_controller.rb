@@ -22,7 +22,7 @@ class TasksController < ApplicationController
     end
 
     if Task.joins(:user).exists?(:users => {school: current_user.school})
-      @tasks = Task.find_tasks(current_user.school, params[:pay])
+      @tasks = Task.joins(:user).where(:users => {school: current_user.school})
     else
       @tasks = []
     end
@@ -31,14 +31,22 @@ class TasksController < ApplicationController
       @sort = params[:sort]
     elsif (session[:sort] != nil)
       @sort = session[:sort]
+      return redirect_to tasks_path(sort: @sort)
     end
-
+  
     if (@sort == "created_at_old")
-      @sort_oldest_date_header = 'hilite bg-info'
+      @sort_oldest_date_header = 'hilite bg-info col-2'
       @tasks = @tasks.order(created_at: :asc)
     elsif (@sort == "created_at_new")
-      @sort_recent_date_header = 'hilite bg-info'
+      @sort_recent_date_header = 'hilite bg-info col-2'
       @tasks = @tasks.order(created_at: :desc)
+    elsif (@sort == "lowest_to_highest_pay")
+      @sort_low_high_price_header = 'hilite bg-info col-2'
+      @tasks = @tasks.order(price: :asc)
+    elsif (@sort == "highest_to_lowest_pay")
+      @sort_high_low_price_header = 'hilite bg-info col-2'
+      @tasks = @tasks.order(price: :desc)
+
     end
 
     session[:sort] = @sort
@@ -124,6 +132,6 @@ class TasksController < ApplicationController
 
   private
   def task_params
-      params.require(:task).permit(:name, :hours, :location, :price, :description, :user_id, :sort, :pay, :time)
+      params.require(:task).permit(:name, :hours, :location, :price, :description, :user_id, :sort)
   end
 end

@@ -1,6 +1,5 @@
 <link rel="stylesheet" type="text/css" href="/app/stylesheets/application.css">
 
-
 <%= render 'shared/navbar' %>
 <div class = "container">
 <div class="row">
@@ -26,6 +25,20 @@
           <%= link_to 'Sort By Newest', tasks_path(:sort=>"created_at_new"), id: 'date_header_new' %>
         </div>
       </div>
+
+      <div class="<%=@sort_high_low_price_header%>">
+          <%= link_to 'high to low price', tasks_path(:sort=>"highest_to_lowest_pay"), id: 'price_header_new' %>
+        </div>
+      </div>
+
+
+      <div class="<%=@sort_low_high_price_header%>">
+          <%= link_to 'low to high price', tasks_path(:sort=>"lowest_to_highest_pay"), id: 'price_header_new' %>
+        </div>
+      </div>
+
+
+
       <% if @tasks.length == 0 %>
         <div class="col-12 text-center">
           There are no tasks available at the moment.
@@ -45,7 +58,7 @@
               <p class="card-text font-weight-bold">Time Needed: <%= t.hours %> hr(s)</p>
               <p class="card-text font-weight-bold">Location: <%= t.location %></p>
               <p class="card-text font-weight-bold">Pay: $<%= t.price %></p>
-              <p class="card-text font-weight-bold">Created At: <%= t.created_at %></p>
+              <p class="card-text font-weight-bold">Posted <%= time_ago_in_words(t.created_at) %> ago</p>
 
             </div>
           </div>
