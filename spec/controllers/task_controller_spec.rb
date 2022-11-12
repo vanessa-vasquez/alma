@@ -192,6 +192,64 @@ describe TasksController do
     end 
   end
 
+  describe 'sort tasks from most recent date' do 
+    let!(:user) {User.create!({id: 50, email: 'ad45@columbia.edu', password: 'password12345', fname: 'Alison', lname: 'Doll', school: 'Columbia University', confirmed_at: "2017-05-26 14:00:00 +0800"})}
+    let!(:param) {{id: 1, name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 50, completed: false, created_at: DateTime.new(2022,11,5)}}
+    let!(:task1) {Task.create!(param)}
+    let!(:param2) {{id: 2, name: 'Chores', hours: 2, deadline: DateTime.new(2022,12,6), location: 'East Campus', price: 20, description: 'Need help cleaning my dorm', user_id: 50, completed: false, created_at: DateTime.new(2022,11,6)}}
+    let!(:task2) {Task.create!(param2)}
+    
+    it "sorts tasks from recent date" do
+      sign_in user
+      get :index, :sort => 'created_at_new'
+      expect(assigns(:tasks)).to match_array([task2, task1])
+    end
+  end
+
+
+  describe 'sort tasks from oldest date' do 
+    let!(:user) {User.create!({id: 50, email: 'ad45@columbia.edu', password: 'password12345', fname: 'Alison', lname: 'Doll', school: 'Columbia University', confirmed_at: "2017-05-26 14:00:00 +0800"})}
+    let!(:param) {{id: 1, name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 50, completed: false, created_at: DateTime.new(2022,11,5)}}
+    let!(:task1) {Task.create!(param)}
+    let!(:param2) {{id: 2, name: 'Chores', hours: 2, deadline: DateTime.new(2022,12,6), location: 'East Campus', price: 20, description: 'Need help cleaning my dorm', user_id: 50, completed: false, created_at: DateTime.new(2022,11,6)}}
+    let!(:task2) {Task.create!(param2)}
+    
+    it "sorts tasks from oldest date" do
+      sign_in user
+      get :index, :sort => 'created_at_old'
+      expect(assigns(:tasks)).to match_array([task1, task2])
+    end
+  end
+
+
+  describe 'sort tasks from low to high' do 
+    let!(:user) {User.create!({id: 50, email: 'ad45@columbia.edu', password: 'password12345', fname: 'Alison', lname: 'Doll', school: 'Columbia University', confirmed_at: "2017-05-26 14:00:00 +0800"})}
+    let!(:param) {{id: 1, name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 50, completed: false, created_at: DateTime.new(2022,11,5)}}
+    let!(:task1) {Task.create!(param)}
+    let!(:param2) {{id: 2, name: 'Chores', hours: 2, deadline: DateTime.new(2022,12,6), location: 'East Campus', price: 20, description: 'Need help cleaning my dorm', user_id: 50, completed: false, created_at: DateTime.new(2022,11,6)}}
+    let!(:task2) {Task.create!(param2)}
+    
+    it "sorts tasks low to high" do
+      sign_in user
+      get :index, :sort => 'lowest_to_highest_pay'
+      expect(assigns(:tasks)).to match_array([task2, task1])
+    end
+  end
+
+  describe 'sort tasks from high to low' do 
+    let!(:user) {User.create!({id: 50, email: 'ad45@columbia.edu', password: 'password12345', fname: 'Alison', lname: 'Doll', school: 'Columbia University', confirmed_at: "2017-05-26 14:00:00 +0800"})}
+    let!(:param) {{id: 1, name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 50, completed: false, created_at: DateTime.new(2022,11,5)}}
+    let!(:task1) {Task.create!(param)}
+    let!(:param2) {{id: 2, name: 'Chores', hours: 2, deadline: DateTime.new(2022,12,6), location: 'East Campus', price: 20, description: 'Need help cleaning my dorm', user_id: 50, completed: false, created_at: DateTime.new(2022,11,6)}}
+    let!(:task2) {Task.create!(param2)}
+    
+    it "sorts tasks high to low" do
+      sign_in user
+      get :index, :sort => 'highest_to_lowest_pay'
+      expect(assigns(:tasks)).to match_array([task1, task2])
+    end
+  end
+
 end
 
 
