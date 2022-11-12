@@ -35,16 +35,16 @@ class TasksController < ApplicationController
     end
   
     if (@sort == "created_at_old")
-      @sort_oldest_date_header = 'hilite bg-info col-2'
+      @sort_oldest_date_header = ''
       @tasks = @tasks.order(created_at: :asc)
     elsif (@sort == "created_at_new")
-      @sort_recent_date_header = 'hilite bg-info col-2'
+      @sort_recent_date_header = ''
       @tasks = @tasks.order(created_at: :desc)
     elsif (@sort == "lowest_to_highest_pay")
-      @sort_low_high_price_header = 'hilite bg-info col-2'
+      @sort_low_high_price_header = ''
       @tasks = @tasks.order(price: :asc)
     elsif (@sort == "highest_to_lowest_pay")
-      @sort_high_low_price_header = 'hilite bg-info col-2'
+      @sort_high_low_price_header = ''
       @tasks = @tasks.order(price: :desc)
 
     end
