@@ -91,7 +91,6 @@ class TasksController < ApplicationController
     @location = @task.location
     @price = @task.price
     @created_at = Time.now
-    
   end
 
   def update

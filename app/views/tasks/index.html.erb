@@ -2,77 +2,80 @@
 
 <%= render 'shared/navbar' %>
 <div class = "container">
-<div class="row">
-  <div class="col-12 text-center" id="index-title">
-    <h1>Tasks</h1>
+  <div class="row">
+    <div class="col-12 text-center" id="index-title">
+      <h1>Tasks</h1>
+    </div>
   </div>
-</div>
 
-<div class="row">
-      <div class="col-3">
-        <div class = "top-header">
-          <h3> Filter </h3> 
-        </div>
-        <div>
-          <%= link_to 'Less than $20', tasks_path(:pay=>"less_than_20"), class: 'btn filter-btn' %> <br/>
-          <%= link_to '$20-$50', tasks_path(:pay=>"20-50"), class: 'btn filter-btn' %> <br/>
-          <%= link_to 'More than $50', tasks_path(:pay=>"over_50"), class: 'btn filter-btn' %>
-        </div>
-        <div class = "top-header">
-          <h3> Sort </h3>
-        </div>
-        <div>
-          <div><b>Date</b></div>
-        </div>
-        <div>
-          <div class = "<%=@sort_oldest_date_header%>">
-            <%= link_to 'Sort By Oldest', tasks_path(:sort=>"created_at_old"), id: 'date_header_old', class: 'btn filter-btn' %>
+  <div class="row">
+        <div class="col-3">
+          <div class = "top-header">
+            <h3> Filter </h3> 
           </div>
-          <div class = "<%=@sort_recent_date_header%>">
-             <%= link_to 'Sort By Newest', tasks_path(:sort=>"created_at_new"), id: 'date_header_new', class: 'btn filter-btn' %>
-          </div>
-        </div>
-        <div>
-          <div><b>Price</b></div>
-        </div>
-        <div>
-          <div class = "<%=@sort_low_high_price_header%>">
-            <%= link_to 'Sort Low to High', tasks_path(:sort=>"lowest_to_highest_pay"), id: 'price_header_new', class: 'btn filter-btn' %>
-          </div>
-          <div class = "<%=@sort_high_low_price_header%>">
-            <%= link_to 'Sort High to Low', tasks_path(:sort=>"highest_to_lowest_pay"), id: 'price_header_new', class: 'btn filter-btn' %>
-          </div>
-        </div>
-      </div>
-      <div class = "col-md-9">
-        <div class = "row">
-        <% if @tasks.length == 0 %>
-          <div class="col-12 text-center">
-            There are no tasks available at the moment.
           <div>
-      ``<% end %>
-      <% @tasks.each_with_index do |t, i| %>
-        <% if i != 0 && i % 2 == 0 %>
-          <div class="col-2"></div>
-        <% end %>
-        <div class="col-5">
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title"><%= t.user.fname %> <%= t.user.lname %></h5>
-              <h6 class="card-subtitle mb-2 text-muted"><%= t.user.email %></h6>
-              <p class="card-text font-weight-bold"><%= t.name %></p>
-              <p class="card-text"><%= t.description %></p>
-              <p class="card-text font-weight-bold">Time Needed: <%= t.hours %> hr(s)</p>
-              <p class="card-text font-weight-bold">Location: <%= t.location %></p>
-              <p class="card-text font-weight-bold">Pay: $<%= t.price %></p>
-              <p class="card-text font-weight-bold">Posted <%= time_ago_in_words(t.created_at) %> ago</p>
-
+            <%= link_to 'Less than $20', tasks_path(:pay=>"less_than_20"), class: 'btn filter-btn' %> <br/>
+            <%= link_to '$20-$50', tasks_path(:pay=>"20-50"), class: 'btn filter-btn' %> <br/>
+            <%= link_to 'More than $50', tasks_path(:pay=>"over_50"), class: 'btn filter-btn' %>
+          </div>
+          <div class = "top-header">
+            <h3> Sort </h3>
+          </div>
+          <div>
+            <div><b>Date</b></div>
+          </div>
+          <div>
+            <div class = "<%=@sort_oldest_date_header%>">
+              <%= link_to 'Sort By Oldest', tasks_path(:sort=>"created_at_old"), id: 'date_header_old', class: 'btn filter-btn' %>
+            </div>
+            <div class = "<%=@sort_recent_date_header%>">
+              <%= link_to 'Sort By Newest', tasks_path(:sort=>"created_at_new"), id: 'date_header_new', class: 'btn filter-btn' %>
+            </div>
+          </div>
+          <div>
+            <div><b>Price</b></div>
+          </div>
+          <div>
+            <div class = "<%=@sort_low_high_price_header%>">
+              <%= link_to 'Sort Low to High', tasks_path(:sort=>"lowest_to_highest_pay"), id: 'price_header_new', class: 'btn filter-btn' %>
+            </div>
+            <div class = "<%=@sort_high_low_price_header%>">
+              <%= link_to 'Sort High to Low', tasks_path(:sort=>"highest_to_lowest_pay"), id: 'price_header_new', class: 'btn filter-btn' %>
             </div>
           </div>
         </div>
-      <% end %>
-        </div>
-      </div>
-</div>
+
+        <div class = "col-md-9">
+          <div class = "row">
+            <% @tasks.each_with_index do |t, i| %>
+              <% if i != 0 && i % 2 == 0 %>
+                <div class="col-2"></div>
+              <% end %>
+              <div class="col-5">
+                <div class="card" style="width: 18rem;">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= t.user.fname %> <%= t.user.lname %></h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><%= t.user.email %></h6>
+                    <p class="card-text font-weight-bold"><%= t.name %></p>
+                    <p class="card-text"><%= t.description %></p>
+                    <p class="card-text font-weight-bold">Time Needed: <%= t.hours %> hr(s)</p>
+                    <p class="card-text font-weight-bold">Location: <%= t.location %></p>
+                    <p class="card-text font-weight-bold">Pay: $<%= t.price %></p>
+                    <p class="card-text font-weight-bold">Posted <%= time_ago_in_words(t.created_at) %> ago</p>
+                    
+
+                  </div>
+                </div>
+              </div>
+            <% end %>
+
+            <% if @tasks.length == 0 %>
+            <div class="col-12 text-center">
+              There are no tasks available at the moment.
+            </div>
+            <% end %>
+          </div>
+        </div>    
+  </div>
 </div>
 
