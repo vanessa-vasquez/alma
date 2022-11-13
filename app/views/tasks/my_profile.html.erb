@@ -30,6 +30,7 @@
         </div>
         <div class = "col-9.5">
             <%= link_to 'New Task', new_task_path, class: 'btn btn-primary' %> 
+            <%= link_to 'Delete All Tasks', delete_all_tasks_path, :method => :get, class: 'btn btn-danger', data: {confirm: "Are you sure you want to delete all your tasks?"} %>
         </div>
         <div class = "col-8">
                 <% @my_tasks.each do |t| %>

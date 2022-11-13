@@ -5,6 +5,7 @@ Rottenpotatoes::Application.routes.draw do
   resources :tasks do
     collection do
       get 'my_profile'
+      get 'delete_all'
     end
   end 
 end
