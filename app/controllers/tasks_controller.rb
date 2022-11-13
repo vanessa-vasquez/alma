@@ -134,6 +134,14 @@ class TasksController < ApplicationController
     end
   end
 
+  # def delete_all_tasks
+  #   if !user_signed_in?
+  #     return redirect_to root_path
+  #   end
+
+  #   Task.where(current_user == @task.user_id).delete_all
+  # end
+
   private
   def task_params
       params.require(:task).permit(:name, :hours, :location, :price, :description, :user_id, :sort)

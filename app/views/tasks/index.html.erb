@@ -46,6 +46,8 @@
         </div>
 
         <div class = "col-md-9">
+          <br/>
+          <h5>Total tasks available: <%= @tasks.count %> </h5>
           <div class = "row">
             <% @tasks.each_with_index do |t, i| %>
               <% if i != 0 && i % 2 == 0 %>
@@ -62,8 +64,6 @@
                     <p class="card-text font-weight-bold">Location: <%= t.location %></p>
                     <p class="card-text font-weight-bold">Pay: $<%= t.price %></p>
                     <p class="card-text font-weight-bold">Posted <%= time_ago_in_words(t.created_at) %> ago</p>
-                    
-
                   </div>
                 </div>
               </div>

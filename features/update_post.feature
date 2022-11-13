@@ -24,14 +24,23 @@ Scenario: I want to update a task name (valid)
     When I follow "Junior Photos"
     Then I should see "Junior Photos"
 
-Scenario: I want to update a task time (valid)
+Scenario: I want to update a task time using integer (valid)
     Given I am on the Edit Task page for "Senior Photos"
     And I fill in "Time Needed" with "5"
     And I press "Update"
     Then I should be on My Profile page
     And I should see "Senior Photos"
     When I follow "Senior Photos"
-    Then I should see "Time Needed: 5 hr(s)"
+    Then I should see "Time Needed: 5.0 hr(s)"
+
+Scenario: I want to update a task time using float (valid)
+    Given I am on the Edit Task page for "Senior Photos"
+    And I fill in "Time Needed" with "0.5"
+    And I press "Update"
+    Then I should be on My Profile page
+    And I should see "Senior Photos"
+    When I follow "Senior Photos"
+    Then I should see "Time Needed: 0.5 hr(s)"
 
 Scenario: Missing name (invalid)
     Given I am on the Edit Task page for "Senior Photos"
