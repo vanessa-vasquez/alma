@@ -22,8 +22,9 @@
     </div>
 
     <div class="field">
-      <%= f.label :school %><br />
-      <%= f.text_field :school %>
+      <% @schools = ['Brown', 'Columbia', 'Cornell', 'Dartmouth', 'Harvard', 'Princeton', 'UPenn', 'Yale'] %>
+      <%= f.label :school, 'University' %><br />
+      <%= f.select :school, @schools, selected: 'Columbia' %>
     </div>
 
     <div class="field">
