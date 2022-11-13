@@ -19,3 +19,16 @@ Scenario: view my user information
 Scenario: view my tasks
     When I go to My Profile page
     Then I should see "Senior Photos"
+
+Scenario: delete all tasks
+    When I go to My Profile page
+    And I follow "Delete All"
+    Then I should not see "Senior Photos"
+    And I should see "You have removed all your tasks!"
+
+Scenario: logged out
+    When I follow "Sign Out"
+    Then I should be on the home page
+    And I should see "Signed out successfully."
+    And I go to My Profile page
+    Then I should be on the home page

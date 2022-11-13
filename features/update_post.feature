@@ -105,3 +105,9 @@ Scenario: Non-numeric price (invalid)
     Then I should see "Price is not a number"
     And I should be on the Edit Task page for "Senior Photos"
 
+Scenario: logged out
+    When I follow "Sign Out"
+    Then I should be on the home page
+    And I should see "Signed out successfully."
+    And I go to the Edit Task page for "Senior Photos"
+    Then I should be on the home page

@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+
   def show
     if !user_signed_in?
       return redirect_to root_path
