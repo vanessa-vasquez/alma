@@ -19,10 +19,21 @@ Scenario: All fields of the post form are completed
     Then I should be on My Profile page
     And I should see "Senior Photos"
 
-Scenario: Missing fields of the post form
+Scenario: Missing fields of the post form (invalid)
     When I am on the Create Task page
-    And I fill in "Time Needed" with "5 minutes"
+    And I fill in "Time Needed" with "5"
     And I fill in "Description" with "Does anybody have any extra AAA batteries? I just need two!"
     And I press "Create"
     Then I should be on the Create Task page
     And I should see "Name can't be blank"
+
+Scenario: Non-Numeric value for Time (invalid)
+    When I am on the Create Task page
+    And I fill in "Task Name" with "Batteries Needed"
+    And I fill in "Time Needed" with "2 hours"
+    And I fill in "Location" with "Wien Hall"
+    And I fill in "Price" with "15"
+    And I fill in "Description" with "Does anybody have any extra AAA batteries? I just need two!"
+    And I press "Create"
+    Then I should be on the Create Task page
+    And I should see "Hours is not a number"
