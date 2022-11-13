@@ -142,6 +142,28 @@ describe TasksController do
     end 
   end
 
+
+  describe 'DELETE all tasks #delete_all' do
+  let!(:param) {{name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 1, completed: false}}
+  let!(:task) {Task.create!(param)}
+
+  describe 'user is signed in' do
+    let!(:user) {User.create!({id: 50, email: 'ad45@columbia.edu', password: 'password12345', fname: 'Alison', lname: 'Doll', school: 'Columbia University', confirmed_at: "2017-05-26 14:00:00 +0800"})}
+
+    it 'deletes all tasks' do
+      sign_in user
+      delete :delete_all, id: task.id
+    end
+  end 
+
+  describe 'user is not signed in' do
+    it "displays root" do
+      delete :delete_all, id: task.id
+      expect(response).to redirect_to(root_path)
+    end
+  end 
+end
+
   describe 'NEW #new' do
     it "gets the user id" do
       user3 = User.create(email: 'dt30@columbia.edu', password: 'CatsAreKool1', fname: 'Adam', lname: 'Daniels', school: 'Columbia University', confirmed_at: "2017-05-26 14:00:00 +0800")

@@ -26,6 +26,10 @@
   background-color: #78b3e0;
 }
 
+.delete-btn {
+  border-radius: 10px;
+}
+
 .title {
   font-size: 120px;
   text-align: center;
@@ -130,6 +134,6 @@
 form {
   border-radius: 10px;
 }
-.filter-btn{
-   margin: 5px;
+.filter-btn {
+  margin: 5px;
 }
