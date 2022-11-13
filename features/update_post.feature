@@ -32,3 +32,67 @@ Scenario: I want to update a task time (valid)
     And I should see "Senior Photos"
     When I follow "Senior Photos"
     Then I should see "Time Needed: 5 hr(s)"
+
+Scenario: Missing name (invalid)
+    Given I am on the Edit Task page for "Senior Photos"
+    And I fill in "Task Name" with ""
+    And I press "Update"
+    Then I should see "Name can't be blank"
+    And I should be on the Edit Task page for "Senior Photos"
+
+Scenario: Missing hours (invalid)
+    Given I am on the Edit Task page for "Senior Photos"
+    And I fill in "Time Needed" with ""
+    And I press "Update"
+    Then I should see "Hours can't be blank"
+    And I should be on the Edit Task page for "Senior Photos"
+
+Scenario: Missing location (invalid)
+    Given I am on the Edit Task page for "Senior Photos"
+    And I fill in "Location" with ""
+    And I press "Update"
+    Then I should see "Location can't be blank"
+    And I should be on the Edit Task page for "Senior Photos"
+
+Scenario: Missing price (invalid)
+    Given I am on the Edit Task page for "Senior Photos"
+    And I fill in "Price" with ""
+    And I press "Update"
+    Then I should see "Price can't be blank"
+    And I should be on the Edit Task page for "Senior Photos"
+
+Scenario: Missing description (invalid)
+    Given I am on the Edit Task page for "Senior Photos"
+    And I fill in "Description" with ""
+    And I press "Update"
+    Then I should see "Description can't be blank"
+    And I should be on the Edit Task page for "Senior Photos"
+
+Scenario: Less than 0 hours (invalid)
+    Given I am on the Edit Task page for "Senior Photos"
+    And I fill in "Time Needed" with "-10"
+    And I press "Update"
+    Then I should see "Hours must be greater than or equal to 0"
+    And I should be on the Edit Task page for "Senior Photos"
+
+Scenario: Less than 0 price (invalid)
+    Given I am on the Edit Task page for "Senior Photos"
+    And I fill in "Price" with "-10"
+    And I press "Update"
+    Then I should see "Price must be greater than or equal to 0"
+    And I should be on the Edit Task page for "Senior Photos"
+
+Scenario: Non-numeric hours (invalid)
+    Given I am on the Edit Task page for "Senior Photos"
+    And I fill in "Time Needed" with "abc"
+    And I press "Update"
+    Then I should see "Hours is not a number"
+    And I should be on the Edit Task page for "Senior Photos"
+
+Scenario: Non-numeric price (invalid)
+    Given I am on the Edit Task page for "Senior Photos"
+    And I fill in "Price" with "abc"
+    And I press "Update"
+    Then I should see "Price is not a number"
+    And I should be on the Edit Task page for "Senior Photos"
+

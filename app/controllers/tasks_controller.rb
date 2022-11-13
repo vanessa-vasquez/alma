@@ -93,14 +93,40 @@ class TasksController < ApplicationController
     @created_at = Time.now
   end
 
+  # def update
+  #   if !user_signed_in?
+  #     return redirect_to root_path 
+  #   end
+  #   @task = Task.find params[:id]
+  #   if task_params[:name].empty? || task_params[:hours].empty? || task_params[:location].empty? || task_params[:price].empty? || task_params[:description].empty? 
+  #     flash[:notice] = "Please fill out all fields"
+  #     redirect_to edit_task_path(params[:id])
+  #   # elsif !(task_params[:hours].parseInt() >= 0)
+  #   #   flash[:notice] = "Please enter a valid number for time needed"
+  #   #   redirect_to edit_task_path(params[:id])
+  #   else
+  #     @task.update_attributes!(task_params)
+  #     flash[:notice] = "A task was successfully updated."
+  #     redirect_to my_profile_tasks_path
+  #   end
+  # end
+
   def update
     if !user_signed_in?
       return redirect_to root_path 
     end
-    @task = Task.find params[:id]
-    @task.update_attributes!(task_params)
-    flash[:notice] = "A task was successfully updated."
-    redirect_to my_profile_tasks_path
+    @task = Task.find(params[:id])
+
+    task = Task.new(name: task_params[:name], hours: task_params[:hours], location: task_params[:location], price: task_params[:price], description: task_params[:description])
+
+    if task.valid?
+      @task.update_attributes(task_params)
+      flash[:notice] = "A task was successfully updated."
+      redirect_to my_profile_tasks_path
+    else
+      flash[:notice] = task.errors.full_messages[0]
+      redirect_to edit_task_path(params[:id])
+    end
   end
 
   def destroy
