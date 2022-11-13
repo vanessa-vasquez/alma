@@ -73,6 +73,15 @@ describe TasksController do
           }.to change(Task,:count).by(1)
         end
       end
+
+      context "with invalid attributes" do
+        it "does not create a new task" do
+          sign_in user
+          post :create, task: { name: "Senior", price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 1, completed: false}
+          expect(flash[:warning]).not_to be_empty
+          expect(response).to redirect_to(new_task_path)
+        end
+      end
     end 
 
     describe 'user is not signed in' do
@@ -155,10 +164,19 @@ describe TasksController do
       context "with good data" do
         it "updates the task" do
           sign_in user
-          patch :update, id: 1, task: { name: "Senior", hours: 3}
+          patch :update, id: 1, task: { name: "Senior", hours: 3, location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 1, completed: false}
           expect(assigns(:task)).to eq(task1)
           expect(flash[:notice]).to match('A task was successfully updated.')
           expect(response).to redirect_to(my_profile_tasks_path)
+        end
+      end
+
+      context "with bad data" do
+        it "does not update the task" do
+          sign_in user
+          patch :update, id: 1, task: { name: "Senior", hours: 3, price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 1, completed: false}
+          expect(flash[:notice]).to match("Location can't be blank")
+          expect(response).to redirect_to(edit_task_path(1))
         end
       end
     end
