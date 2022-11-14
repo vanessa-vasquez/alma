@@ -1,8 +1,8 @@
 class EmailValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
-    #unless value.include? ".edu"
-      #record.errors[attribute] << (options[:message] || "is not a university email")
-    #end
+    unless value.include? ".edu"
+      record.errors[attribute] << (options[:message] || "is not a university email")
+    end
   end
 end
 
