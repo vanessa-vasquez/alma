@@ -157,7 +157,7 @@ class TasksController < ApplicationController
 
     @task = Task.find((params["format"]).to_i)
     @task.user_accepted_id = current_user.id
-    @task.update_attributes(task_params)
+    @task.update_attributes(task_params_accept)
 
     redirect_to my_profile_tasks_path
   end
@@ -169,7 +169,7 @@ class TasksController < ApplicationController
 
     @task = Task.find((params["format"]).to_i)
     @task.user_accepted_id = 0
-    @task.update_attributes(task_params)
+    @task.update_attributes(task_params_accept)
 
     redirect_to my_profile_tasks_path
   end
@@ -181,7 +181,7 @@ class TasksController < ApplicationController
 
     @task = Task.find((params["format"]).to_i)
     @task.completed = true
-    @task.update_attributes(task_params)
+    @task.update_attributes(task_params_accept)
 
     redirect_to my_profile_tasks_path
   end
@@ -193,5 +193,11 @@ class TasksController < ApplicationController
       
       # This allows you to accept and mark as complete but not create and edit a new task
       # params.permit(:name, :hours, :location, :price, :description, :user_id, :completed, :user_accepted_id, :sort)
+  end
+
+  private
+  def task_params_accept
+      # This allows you to accept and mark as complete but not create and edit a new task
+      params.permit(:name, :hours, :location, :price, :description, :user_id, :completed, :user_accepted_id, :sort)
   end
 end
