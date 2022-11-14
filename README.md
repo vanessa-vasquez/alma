@@ -20,7 +20,7 @@ Vanessa Vasquez - vv2317
 3) Run 'mailcatcher'
 4) Run 'bundle exec rails server'
 5) Go to 'http://127.0.0.1:1080/'
-6) Sign up for an account
+6) In another window, sign up for an account on http://localhost:3000/users/sign_up. Make sure to use a university email address that includes .edu
 7) Navigate to 'http://127.0.0.1:1080/', and you should see the confirmation email received there!
 
 ## Set up heroku 
