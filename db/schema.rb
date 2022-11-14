@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20221113194939) do
+ActiveRecord::Schema.define(version: 20221114173556) do
 
   create_table "tasks", force: :cascade do |t|
     t.string   "name"
@@ -23,9 +23,11 @@ ActiveRecord::Schema.define(version: 20221113194939) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.boolean  "completed",   default: false
+    t.boolean  "completed",        default: false
+    t.integer  "user_accepted_id"
   end
 
+  add_index "tasks", ["user_accepted_id"], name: "index_tasks_on_user_accepted_id"
   add_index "tasks", ["user_id"], name: "index_tasks_on_user_id"
 
   create_table "users", force: :cascade do |t|

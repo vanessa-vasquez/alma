@@ -6,6 +6,9 @@ Rottenpotatoes::Application.routes.draw do
     collection do
       get 'my_profile'
       get 'delete_all'
+      get 'accept'
+      get 'delete_accepted'
+      get 'completed'
     end
   end 
 end

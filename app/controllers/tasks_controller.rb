@@ -3,11 +3,10 @@ class TasksController < ApplicationController
   def show
     if !user_signed_in?
       return redirect_to root_path
-    elsif Task.where(id: params[:id]).empty? || (!Task.where(id: params[:id]).empty? && (Task.find(params[:id]).user_id != current_user.id))
-      return redirect_to root_path
     end
 
     @task = Task.find params[:id]
+    @user_id = @task.user_id
     @id = @task.id
     @name = @task.name
     @description = @task.description
@@ -15,6 +14,8 @@ class TasksController < ApplicationController
     @location = @task.location
     @price = @task.price
     @created_at = @task.created_at
+    @user_accepted_id = @task.user_accepted_id
+
   end
  
   def index
@@ -91,6 +92,7 @@ class TasksController < ApplicationController
     @hours = @task.hours
     @location = @task.location
     @price = @task.price
+    @user_accepted_id = @task.user_accepted_id
     @created_at = Time.now
   end
 
@@ -104,7 +106,8 @@ class TasksController < ApplicationController
 
     if task.valid?
       @task.update_attributes(task_params)
-      flash[:notice] = "A task was successfully updated."
+      flash[:notice] = task_params
+      # flash[:notice] = "A task was successfully updated."
       redirect_to my_profile_tasks_path
     else
       flash[:notice] = task.errors.full_messages[0]
@@ -132,6 +135,8 @@ class TasksController < ApplicationController
       @last_name = current_user.lname
       @school = current_user.school
       @email = current_user.email
+
+      @accepted_tasks = Task.where(user_accepted_id: current_user.id) == nil ? [] : Task.where(user_accepted_id: current_user.id)
     end
   end
 
@@ -145,8 +150,48 @@ class TasksController < ApplicationController
     redirect_to my_profile_tasks_path
   end
 
+  def accept
+    if !user_signed_in?
+      return redirect_to root_path
+    end
+
+    @task = Task.find((params["format"]).to_i)
+    @task.user_accepted_id = current_user.id
+    @task.update_attributes(task_params)
+
+    redirect_to my_profile_tasks_path
+  end
+
+  def delete_accepted
+    if !user_signed_in?
+      return redirect_to root_path
+    end
+
+    @task = Task.find((params["format"]).to_i)
+    @task.user_accepted_id = 0
+    @task.update_attributes(task_params)
+
+    redirect_to my_profile_tasks_path
+  end
+
+  def completed
+    if !user_signed_in?
+      return redirect_to root_path
+    end
+
+    @task = Task.find((params["format"]).to_i)
+    @task.completed = true
+    @task.update_attributes(task_params)
+
+    redirect_to my_profile_tasks_path
+  end
+
   private
   def task_params
-      params.require(:task).permit(:name, :hours, :location, :price, :description, :user_id, :sort)
+      # This allows you to create and edit a new task but not accept and mark as complete
+      params.require(:task).permit(:name, :hours, :location, :price, :description, :user_id, :completed, :user_accepted_id, :sort)
+      
+      # This allows you to accept and mark as complete but not create and edit a new task
+      # params.permit(:name, :hours, :location, :price, :description, :user_id, :completed, :user_accepted_id, :sort)
   end
 end

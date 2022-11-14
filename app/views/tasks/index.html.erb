@@ -47,26 +47,35 @@
 
         <div class = "col-md-9">
           <br/>
-          <h5>Total tasks available: <%= @tasks.count %> </h5>
+          <div>
+            <h5>Total tasks available: <%= @tasks.select{|task| task.user_accepted_id == 0 }.size %> </h5>
+            <h5>Total tasks in the universe: <%= @tasks.count %> </h5>
+          </div>
           <div class = "row">
             <% @tasks.each_with_index do |t, i| %>
               <% if i != 0 && i % 2 == 0 %>
-                <div class="col-2"></div>
-              <% end %>
-              <div class="col-5">
-                <div class="card" style="width: 18rem;">
-                  <div class="card-body">
-                    <h3 class="card-text font-weight-bold"><%= t.name %></h3>
-                    <h5 class="card-title"><%= t.user.fname %> <%= t.user.lname %></h5>
-                    <h6 class="card-subtitle mb-2 text-muted"><%= t.user.email %></h6>
-                    <p class="card-text"><%= t.description %></p>
-                    <p class="card-text font-weight-bold">Time Needed: <%= t.hours %> hr(s)</p>
-                    <p class="card-text font-weight-bold">Location: <%= t.location %></p>
-                    <p class="card-text font-weight-bold">Pay: $<%= t.price %></p>
-                    <p class="card-text font-weight-bold">Posted <%= time_ago_in_words(t.created_at) %> ago</p>
+              <div class="col-2"></div>
+            <% end %>
+            <div class="col-5">
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h3 class="card-text font-weight-bold"><%= t.name %></h3>
+                  <h6 class="card-text font-weight-bold">Task id: <%= t.id %></h6>
+                  <h6 class="card-text font-weight-bold">Acceptor id: <%= t.user_accepted_id %></h6>
+                  <h5 class="card-title"><%= t.user.fname %> <%= t.user.lname %></h5>
+                  <h6 class="card-subtitle mb-2 text-muted"><%= t.user.email %></h6>
+                  <p class="card-text"><%= t.description %></p>
+                  <p class="card-text font-weight-bold">Time Needed: <%= t.hours %> hr(s)</p>
+                  <p class="card-text font-weight-bold">Location: <%= t.location %></p>
+                  <p class="card-text font-weight-bold">Pay: $<%= t.price %></p>
+                  <p class="card-text font-weight-bold">Posted <%= time_ago_in_words(t.created_at) %> ago</p>
+                  <% if t.user != current_user %>
+                    <%= link_to 'Accept task', accept_tasks_path(t.id), class: 'btn btn-outline-dark' %> 
+                  <% end %>
                   </div>
-                </div>
               </div>
+            </div>
+
             <% end %>
 
             <% if @tasks.length == 0 %>

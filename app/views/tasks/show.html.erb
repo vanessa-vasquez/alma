@@ -6,9 +6,21 @@
   </div>
 </div>
 <div class="row">
+  <div class="col-12 text-center top-header">
+    <% if @user_accepted_id == 0 %>
+      <h3>Currently assigned to no one</h1>
+    <% else %>
+      <h3>Currently assigned to user id: <%=@user_accepted_id%></h1>
+    <% end %>
+  </div>
+</div>
+<div class="row">
   <div class ="col-3">
   </div>
   <div class="task-info col-6">
+      <div class = "descriptor">
+        <b>Posted by user_id</b>: <%=@user_id%>
+      </div>
       <div class = "descriptor">
         <b>Description</b>: <%=@description%>
       </div>
@@ -28,8 +40,17 @@
   <div class ="col-3">
   </div>
 </div>
-<div class="row">
-  <div class="col-12 text-center edit-task">
-    <%= link_to 'Edit Task', edit_task_path(@id), class: 'btn btn-primary' %> 
+
+<% if @user_id == current_user.id %>
+  <div class="row">
+    <div class="col-12 text-center edit-task">
+      <%= link_to 'Edit Task', edit_task_path(@id), class: 'btn btn-primary' %> 
+    </div>
   </div>
-</div>
+<% else %>
+  <div class="row">
+  <div class="col-12 text-center edit-task">
+    <%= link_to 'Mark as completed', completed_tasks_path(@id), class: 'btn btn-primary' %> 
+  </div>
+  </div>
+<% end %>
