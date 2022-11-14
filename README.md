@@ -15,13 +15,13 @@ Vanessa Vasquez - vv2317
 - Run 'rake db:migrate'
 
 ## Set up mailcatcher in development
-1) run 'gem install mailcatcher'
+1) Run 'gem install mailcatcher'
 2) If 1) gave you errors, run the following: gem install mailcatcher -- --with-cflags="-Wno-error=implicit-function-declaration"
-3) run 'mailcatcher'
-4) run 'bundle exec rails server'
-5) go to 'http://127.0.0.1:1080/'
-6) sign up for an account
-7) navigate to 'http://127.0.0.1:1080/', and you should see the confirmation email received there!
+3) Run 'mailcatcher'
+4) Run 'bundle exec rails server'
+5) Go to 'http://127.0.0.1:1080/'
+6) Sign up for an account
+7) Navigate to 'http://127.0.0.1:1080/', and you should see the confirmation email received there!
 
 ## Set up heroku 
 - Download heroku CLI from website
