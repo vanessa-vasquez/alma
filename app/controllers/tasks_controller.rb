@@ -16,7 +16,7 @@ class TasksController < ApplicationController
     @created_at = @task.created_at
     @user_accepted_id = @task.user_accepted_id
     
-    if @user_accepted_id != nil
+    if @user_accepted_id != nil && @user_accepted_id != 0
       @user = User.find @user_accepted_id.to_i
       @user_accepted_uni = @user.email
     end
