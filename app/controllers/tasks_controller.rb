@@ -16,8 +16,10 @@ class TasksController < ApplicationController
     @created_at = @task.created_at
     @user_accepted_id = @task.user_accepted_id
     
-    @user = User.find @user_accepted_id.to_i
-    @user_accepted_uni = @user.email
+    if @user_accepted_id != nil
+      @user = User.find @user_accepted_id.to_i
+      @user_accepted_uni = @user.email
+    end
   end
  
   def index
