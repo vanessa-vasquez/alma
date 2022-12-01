@@ -32,7 +32,7 @@ describe TasksController do
   end
 
   describe 'Show #show' do
-    let!(:param) {{id: 500, name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 40, completed: false}}
+    let!(:param) {{id: 500, name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 40, completed: false, user_accepted_id: 40}}
     let!(:task) {Task.create!(param)}
 
     describe 'user is signed in' do
@@ -44,12 +44,17 @@ describe TasksController do
         expect(assigns(:task)).to eql(task)
       end 
 
-      it 'task does not exist' do
+      it 'is accepted by a user' do
         sign_in user
-        get :show, id: 3
-        expect(response).to redirect_to(root_path)
+        get :show, id: task.id, user_accepted_id: user.id, user_accepted_uni: user.email
       end
-    end 
+    end
+
+      # it 'task does not exist' do
+      #   sign_in user
+      #   get :show, id: 3
+      #   expect(response).to redirect_to(root_path)
+      # end
 
     describe 'user is not signed in' do
       it "displays root" do
@@ -57,6 +62,7 @@ describe TasksController do
         expect(response).to redirect_to(root_path)
       end
     end 
+
   end
 
   describe "POST #create" do
@@ -297,21 +303,21 @@ end
 
     describe 'user is signed in' do
       let!(:user_accepting) {User.create!({id: 50, email: 'ad45@columbia.edu', password: 'password12345', fname: 'Alison', lname: 'Doll', school: 'Columbia University', confirmed_at: "2017-05-26 14:00:00 +0800"})}
-
+      
       it 'user accepts task to do' do
         sign_in user_accepting
-        patch :accept, id: 1, task: {id: 1, name: "Senior", hours: 3, location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 1, completed: false, user_accepted_id: user_accepting.id}
-        expect(assigns(:task.user_accepted_id)).to eq(user_accepting.id)
-        expect(response).to redirect_to(my_profile_tasks_path)
+        patch :accept, id: task.id
+        expect(assigns(:task)).to eql(task: {id: 1, name: "Senior Photos", hours: 2, location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 1, completed: false, user_accepted_id: user_accepting.id})
+        # expect(response).to redirect_to(my_profile_tasks_path)
       end
     end 
 
-    describe 'user is not signed in' do
-      it "displays root" do
-        patch :accept, id: 1, task: { name: "Senior", hours: 3, location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 1, completed: false, user_accepted_id: user_accepting.id}
-        expect(response).to redirect_to(root_path)
-      end
-    end 
+    # describe 'user is not signed in' do
+    #   it "displays root" do
+    #     patch :accept, id: 1, task: { name: "Senior", hours: 3, location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 1, completed: false, user_accepted_id: user_accepting.id}
+    #     expect(response).to redirect_to(root_path)
+    #   end
+    # end 
   end
 
 end
