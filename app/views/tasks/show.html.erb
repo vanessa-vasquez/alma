@@ -7,7 +7,7 @@
 </div>
 <div class="row">
   <div class="col-12 text-center top-header">
-    <% if @user_accepted_id == 0 || @user_accepted_id == nil %>
+    <% if @user_accepted_id == nil %>
       <h3>Currently assigned to no one</h1>
     <% else %>
       <h3>Currently assigned to user: <%=@user_accepted_uni%></h1>

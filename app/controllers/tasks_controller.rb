@@ -16,7 +16,7 @@ class TasksController < ApplicationController
     @created_at = @task.created_at
     @user_accepted_id = @task.user_accepted_id
     
-    if @user_accepted_id != nil && @user_accepted_id != 0
+    if @user_accepted_id != nil
       @user = User.find @user_accepted_id.to_i
       @user_accepted_uni = @user.email
     end
@@ -172,7 +172,7 @@ class TasksController < ApplicationController
     end
 
     @task = Task.find((params["format"]).to_i)
-    @task.user_accepted_id = 0
+    @task.user_accepted_id = nil
     @task.update_attributes(task_params_accept)
 
     redirect_to my_profile_tasks_path
