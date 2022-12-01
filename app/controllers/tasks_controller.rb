@@ -111,7 +111,7 @@ class TasksController < ApplicationController
     if task.valid?
       @task.update_attributes(task_params)
       flash[:notice] = task_params
-      # flash[:notice] = "A task was successfully updated."
+      flash[:notice] = "A task was successfully updated."
       redirect_to my_profile_tasks_path
     else
       flash[:notice] = task.errors.full_messages[0]

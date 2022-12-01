@@ -188,7 +188,7 @@ end
           sign_in user
           patch :update, id: 1, task: { name: "Senior", hours: 3, location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 1, completed: false}
           expect(assigns(:task)).to eq(task1)
-          # expect(flash[:notice]).to match('A task was successfully updated.')
+          expect(flash[:notice]).to match('A task was successfully updated.')
           expect(response).to redirect_to(my_profile_tasks_path)
         end
       end
