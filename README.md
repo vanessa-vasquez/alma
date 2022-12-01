@@ -39,3 +39,7 @@ Vanessa Vasquez - vv2317
 
 ## To run project in development
 - Run 'bundle exec rails server'
+
+## Notes
+- If you want to reseed, run 'rake db:reset' which will drop the data, migrate, and reseed.
+- If still in development mode, load mailcatcher to approve seeded users
