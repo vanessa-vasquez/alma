@@ -39,7 +39,9 @@
                 <% @my_tasks.each do |t| %>
                     <div class ="task-prof col-lg-10">
                         <%= link_to t.name, task_path(t.id) %>
-                        <% if t.completed %>
+                        <% if t.user_accepted_id != 0 %>
+                            accepted
+                        <% elsif t.completed %>
                             completed!
                         <% end %>
                         <div class = "float-right top:50%">
