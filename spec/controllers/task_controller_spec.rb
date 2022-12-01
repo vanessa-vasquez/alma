@@ -298,8 +298,9 @@ end
 
  
   describe 'accept task #accept' do
-    let!(:param) {{id: 0, name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 1, completed: false, user_accepted_id: 50}}
+    let!(:param) {{id: 0, name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 1, completed: false}}
     let!(:task1) {Task.create!(param)}
+
 
     describe 'user is signed in' do
       let!(:user) {User.create!({id: 50, email: 'ad45@columbia.edu', password: 'password12345', fname: 'Alison', lname: 'Doll', school: 'Columbia University', confirmed_at: "2017-05-26 14:00:00 +0800"})}
@@ -313,6 +314,28 @@ end
     describe 'user is not signed in' do
       it "displays root" do
         get :accept, id: task1.id
+        expect(response).to redirect_to(root_path)
+      end
+    end 
+  end
+
+
+  describe 'delete accepted task #delete_accepted' do
+    let!(:param) {{id: 0, name: 'Senior Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30, description: 'Seeking experienced photographer for Senior pics!', user_id: 1, completed: false, user_accepted_id: 50}}
+    let!(:task1) {Task.create!(param)}
+
+    describe 'user is signed in' do
+      let!(:user) {User.create!({id: 50, email: 'ad45@columbia.edu', password: 'password12345', fname: 'Alison', lname: 'Doll', school: 'Columbia University', confirmed_at: "2017-05-26 14:00:00 +0800"})}
+      
+      it 'user deletes accepted task to do' do
+        sign_in user
+        get :delete_accepted, id: task1.id, user_accepted_id: nil
+      end
+    end 
+
+    describe 'user is not signed in' do
+      it "displays root" do
+        get :delete_accepted, id: task1.id
         expect(response).to redirect_to(root_path)
       end
     end 
