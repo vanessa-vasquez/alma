@@ -48,8 +48,9 @@
         <div class = "col-md-9">
           <br/>
           <div>
-            <h5>Total tasks available: <%= @tasks.select{|task| task.user_accepted_id == 0 && task.completed == false}.size %> </h5>
-            <h5>Total tasks in the universe: <%= @tasks.count %> </h5>
+            <h5>Total tasks available (not accepted): <%= @tasks.select{|task| task.user_accepted_id == 0 && task.completed == false}.size %> </h5>
+            <h5>Total tasks in the universe that are yet to be completed: <%= @tasks.count - @tasks.select{|task| task.completed == true}.size  %> </h5>
+            <h5>Total tasks in the universe that have ever existed: <%= @tasks.count %> </h5>
           </div>
           <div class = "row">
             <% @tasks.each_with_index do |t, i| %>
