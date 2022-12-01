@@ -33,16 +33,16 @@ class TasksController < ApplicationController
       @sort = params[:sort]
     end
   
-    if (@sort == "created_at_old")
+    if (@sort == "created_at_old" && @tasks != nil)
       @sort_oldest_date_header = ''
       @tasks = @tasks.order(created_at: :asc)
-    elsif (@sort == "created_at_new")
+    elsif (@sort == "created_at_new" && @tasks != nil)
       @sort_recent_date_header = ''
       @tasks = @tasks.order(created_at: :desc)
-    elsif (@sort == "lowest_to_highest_pay")
+    elsif (@sort == "lowest_to_highest_pay" && @tasks != nil)
       @sort_low_high_price_header = ''
       @tasks = @tasks.order(price: :asc)
-    elsif (@sort == "highest_to_lowest_pay")
+    elsif (@sort == "highest_to_lowest_pay" && @tasks != nil)
       @sort_high_low_price_header = ''
       @tasks = @tasks.order(price: :desc)
 
