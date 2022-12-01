@@ -14,11 +14,11 @@ class Task < ActiveRecord::Base
       return Task.joins(:user).where(:users => {school: school})
     else
       if (pay == "less_than_20")
-        return Task.joins(:user).where(:users => {school: school}, :price => -1...20)
+        return Task.joins(:user).where(:users => {school: school}, :price => -1...20, :accepted => false)
       elsif (pay == "20-50")
-        return Task.joins(:user).where(:users => {school: school}, :price => 20..50)
+        return Task.joins(:user).where(:users => {school: school}, :price => 20..50, :accepted => false)
       else
-        return Task.joins(:user).where(:users => {school: school}, :price => 50...Float::INFINITY)
+        return Task.joins(:user).where(:users => {school: school}, :price => 50...Float::INFINITY, :accepted => false)
       end 
     end
   end

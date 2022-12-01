@@ -33,6 +33,8 @@ class TasksController < ApplicationController
       @tasks = []
     end
 
+    @available_tasks = @tasks.length - Task.where(:accepted => true).length
+
     if (params[:sort] != nil)
       @sort = params[:sort]
     end
@@ -160,6 +162,7 @@ class TasksController < ApplicationController
     end
 
     @task = Task.find((params["format"]).to_i)
+    @task.accepted = true
     @task.user_accepted_id = current_user.id
     @task.update_attributes(task_params_accept)
 
@@ -172,6 +175,7 @@ class TasksController < ApplicationController
     end
 
     @task = Task.find((params["format"]).to_i)
+    @task.accepted = false
     @task.user_accepted_id = nil
     @task.update_attributes(task_params_accept)
 

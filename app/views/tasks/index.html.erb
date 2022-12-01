@@ -48,9 +48,7 @@
         <div class = "col-md-9">
           <br/>
           <div>
-            <h5>Total tasks available (not accepted): <%= @tasks.select{|task| task.user_accepted_id == nil && task.completed == false}.size %> </h5>
-            <h5>Total tasks in the universe that are yet to be completed: <%= @tasks.count - @tasks.select{|task| task.completed == true}.size  %> </h5>
-            <h5>Total tasks in the universe that have ever existed: <%= @tasks.count %> </h5>
+            <h5>Available tasks: <%= @available_tasks %> </h5>
           </div>
           <div class = "row">
             <% @tasks.each_with_index do |t, i| %>
@@ -62,7 +60,6 @@
                   <div class="card" style="width: 18rem;">
                     <div class="card-body">
                       <h3 class="card-text font-weight-bold"><%= t.name %></h3>
-                      <h6 class="card-text font-weight-bold">Task id: <%= t.id %></h6>
                       <h5 class="card-title"><%= t.user.fname %> <%= t.user.lname %></h5>
                       <h6 class="card-subtitle mb-2 text-muted"><%= t.user.email %></h6>
                       <p class="card-text"><%= t.description %></p>

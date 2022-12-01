@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20221114173556) do
+ActiveRecord::Schema.define(version: 20221201212043) do
 
   create_table "tasks", force: :cascade do |t|
     t.string   "name"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20221114173556) do
     t.integer  "user_id"
     t.boolean  "completed",        default: false
     t.integer  "user_accepted_id"
+    t.boolean  "accepted",         default: false
   end
 
   add_index "tasks", ["user_accepted_id"], name: "index_tasks_on_user_accepted_id"
