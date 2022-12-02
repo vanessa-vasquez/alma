@@ -70,8 +70,11 @@
                       <p class="card-text font-weight-bold">Location: <%= t.location %></p>
                       <p class="card-text font-weight-bold">Pay: $<%= t.price %></p>
                       <p class="card-text font-weight-bold">Posted <%= time_ago_in_words(t.created_at) %> ago</p>
-                      <% if t.user != current_user %>
+                      <% if t.user != current_user && @accepted_tasks.count - @accepted_tasks.select{|task| task.completed == true}.size <=3 %>
                         <%= link_to 'Accept task', accept_tasks_path(t.id), class: 'btn btn-outline-dark' %> 
+                      <% end %>
+                      <% if t.user != current_user && @accepted_tasks.count  - @accepted_tasks.select{|task| task.completed == true}.size >3 %>
+                        <%= link_to 'Accept task', accept_tasks_path(t.id), class: 'btn btn-outline-dark disabled' %> 
                       <% end %>
                       </div>
                   </div>
