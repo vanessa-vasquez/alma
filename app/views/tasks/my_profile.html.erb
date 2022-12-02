@@ -8,11 +8,13 @@
 </div>
 
 <div class="row" id="account-info">
+    <div class = "col-md-2">
+    </div>
     <div class = "col-md-5">
-        <h2>Account Information</h2>
+        <h1>Account Information</h1>
         <b>Name: </b><%= @first_name %> <%= @last_name %> <br/>
         <b>Email:</b> <%= @email %>  <br/>
-        <b>ID:</b> <%= current_user.id %>  <br/>
+        <b>User ID:</b> <%= current_user.id %>  <br/>
         <b>University:</b> <%= @school %>
     </div>
     <div class = "col-md-3">
@@ -23,8 +25,15 @@
 
 <div class="tasks-section">
     <div class = "row">
-        <%= link_to 'New Task', new_task_path, class: 'btn btn-primary' %> 
-        <%= link_to 'Delete All Tasks', delete_all_tasks_path, :method => :get, class: 'btn btn-danger delete-btn', data: {confirm: "Are you sure you want to delete all your tasks?"} %>
+        <div class = "col-md-3">
+            <h1>My Tasks</h1>
+        </div>
+        <div class = "col-md-9">
+            <div class = "row">
+                <%= link_to 'New Task', new_task_path, class: 'btn btn-primary' %> 
+                <%= link_to 'Delete All Tasks', delete_all_tasks_path, :method => :get, class: 'btn btn-danger delete-btn', data: {confirm: "Are you sure you want to delete all your tasks?"} %>
+            </div>
+        </div>
     </div>
     <br/>
     <div class = "row">
@@ -41,7 +50,7 @@
                         <% elsif t.user_accepted_id != nil %>
                             accepted
                         <% end %>
-                        <div class = "float-right top:50%">
+                        <div class = "float-right top:50% vertical-center">
                             <%= link_to 'Delete', task_path(t.id), method: :delete, class: 'btn btn-danger', data: {confirm: "Are you sure you want to delete this tasks?"} %> 
                         </div>
                     </div>
@@ -57,7 +66,7 @@
                         <% if !t.completed %>
                             <div class ="task-prof col-lg-10">
                                 <%= link_to t.name, task_path(t.id) %>
-                                <div class = "float-right top:50%">
+                                <div class = "float-right top:50% vertical-center">
                                     <%= link_to 'Delete', delete_accepted_tasks_path(t.id), class: 'btn btn-danger', data: {confirm: "Are you sure you want to delete this tasks?"} %> 
                                  </div>
                             </div>
