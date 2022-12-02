@@ -137,3 +137,11 @@ form {
 .filter-btn {
   margin: 5px;
 }
+.vertical-center{
+  margin-top: 10px;
+  margin-bottom: 0;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  border-radius: 10px;
+}

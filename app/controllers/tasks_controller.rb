@@ -51,9 +51,8 @@ class TasksController < ApplicationController
     elsif (@sort == "highest_to_lowest_pay" && @tasks != [])
       @sort_high_low_price_header = ''
       @tasks = @tasks.order(price: :desc)
-
     end
-
+    @accepted_tasks = Task.where(user_accepted_id: current_user.id) == nil ? [] : Task.where(user_accepted_id: current_user.id)
     session[:sort] = @sort
   end
 
