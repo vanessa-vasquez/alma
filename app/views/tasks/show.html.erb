@@ -50,8 +50,10 @@
 <% else %>
   <div class="row">
   <div class="col-12 text-center edit-task">
-    <%= link_to 'Mark as completed', completed_tasks_path(@id), class: 'btn btn-primary' %>
-    <%= link_to 'Unaccept task', delete_accepted_tasks_path(@id), class: 'btn btn-primary' %> 
+    <% if @task.completed == false %>
+      <%= link_to 'Mark as completed', completed_tasks_path(@id), class: 'btn btn-primary' %>
+      <%= link_to 'Unaccept task', delete_accepted_tasks_path(@id), class: 'btn btn-primary' %> 
+    <% end %>
   </div>
   </div>
 <% end %>
