@@ -33,7 +33,12 @@ class TasksController < ApplicationController
       @tasks = []
     end
 
-    @available_tasks = @tasks.length - Task.where(:accepted => true).length
+
+    if @tasks.length - @tasks.where(:accepted => true, :completed => false).length - @tasks.where(:completed => true).length > 0
+      @available_tasks = @tasks.length - @tasks.where(:accepted => true, :completed => false).length - @tasks.where(:completed => true).length
+    else
+      @available_tasks = 0
+    end
 
     if (params[:sort] != nil)
       @sort = params[:sort]
