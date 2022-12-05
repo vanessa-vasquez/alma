@@ -34,7 +34,7 @@ class TasksController < ApplicationController
     end
 
 
-    if @tasks.length - @tasks.where(:accepted => true, :completed => false).length - @tasks.where(:completed => true).length > 0
+    if @tasks.length > 0 && (@tasks.length - @tasks.where(:accepted => true, :completed => false).length - @tasks.where(:completed => true).length > 0)
       @available_tasks = @tasks.length - @tasks.where(:accepted => true, :completed => false).length - @tasks.where(:completed => true).length
     else
       @available_tasks = 0
