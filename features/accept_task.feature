@@ -15,4 +15,3 @@ Scenario: accept a task
     And I follow "Accept task"
     Then I am on My Profile page 
     And I should see "Need brownie pan" 
-

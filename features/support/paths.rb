@@ -22,7 +22,7 @@ module NavigationHelpers
     when /^the login page$/ then new_user_session_path
     when /^the sign up page$/ then new_user_registration_path
   
-
+      
 
 
     # Add more mappings here.
