@@ -23,6 +23,12 @@ Given /I have a task/ do
 end
 
 
+Given /I have accepted a task/ do
+  Task.create!({name: 'Grad Photos', hours: 2, deadline: DateTime.new(2022,12,5), location: 'Low Library Steps', price: 30,
+  description: 'Seeking experienced photographer for Senior pics!', user_accepted_id: 1, completed: false})
+end
+
+
 Given /there are tasks posted by other users/ do
   User.create!({
     :id => 2,
