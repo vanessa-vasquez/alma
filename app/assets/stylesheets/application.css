@@ -145,3 +145,6 @@ form {
   transform: translateY(-50%);
   border-radius: 10px;
 }
+.spacing{
+  height: 20px;
+}
