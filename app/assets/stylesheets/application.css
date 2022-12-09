@@ -1,7 +1,6 @@
 .container {
-  padding-bottom: 20px;
+  padding-bottom: 40px;
 }
-
 .btn-primary {
   background-color: #78b3e0;
   border-color: #78b3e0;
@@ -11,7 +10,6 @@
   margin-right: 20px;
   color: black;
 }
-
 .filter-btn {
   background-color: #d9d9d9;
   border-radius: 10px;
@@ -31,9 +29,9 @@
 }
 
 .title {
-  font-size: 120px;
-  text-align: center;
-  margin-top: 120px;
+  font-size: 90px;
+  text-align: center !important;
+  margin-top: 40px;
 }
 
 .text-center {
@@ -41,7 +39,7 @@
 }
 
 .row3 {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .form {
@@ -60,12 +58,14 @@
   text-align: center;
 }
 .jumbotron {
-  margin: 0px;
+  margin-top: 40px;
   background: none;
+  background-color: white;
+  border-radius: 20px;
 }
 .field {
   margin-left: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 #profile-title {
   margin-top: 20px;

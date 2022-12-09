@@ -3,24 +3,31 @@
 <link rel="stylesheet" type="text/css" href="/app/stylesheets/application.css">
 
 <body>
-
-<div class="row">
-    <div class="col-12 title">
-    Alma
+<div class = "container">
+    <div class = "row">
+        <div class = "col-3">
+        </div>
+        <div class = "jumbotron col-6">
+            <div class="row">
+                <div class="title col-12">
+                    Alma
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h4>because your tasks matter</h4>
+                </div>
+            </div>
+            <div class="row3">
+                <div class="col-12 text-center">
+                    <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary btn-lg' %>
+                    <%= link_to 'Signup', new_user_registration_path, class: 'btn btn-primary btn-lg' %>
+                 </div>
+            </div>
+        </div>
+        <div class = "col-3">
+        
     </div>
 </div>
-<div class="row">
-    <div class="col-12 text-center">
-    <h4>because your tasks matter</h4>
-    </div>
-</div>
-<div class="row3">
-    <div class="col-12 text-center">
-        <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary btn-lg' %>
-        <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary btn-lg' %>
-    </div>
-</div>
-
-
 </body>
 </html>
