@@ -14,7 +14,11 @@ Given /I am signed in/ do
   visit new_user_session_path
   fill_in "user_email", :with => "sj1234@columbia.edu"
   fill_in "user_password", :with => "12345678"
-  click_button "Log in"
+  click_button "Log In"
+end
+
+Given /I am not signed in/ do
+  visit task_path(1)
 end
 
 Given /I have a task/ do

@@ -6,9 +6,13 @@ Feature: accept a task
 
 Background: user is logged in
     Given I am a valid user
-    And I am signed in
 
-Scenario: accept a task
+Scenario: I am not signed in
+    Given I am on the All Tasks page
+    Then I should be on the home page
+
+Scenario: I am signed in to accept a task
+    Given I am signed in
     Given there are tasks posted by other users
     And I am on the All Tasks page
     Then I should see "Need brownie pan"
